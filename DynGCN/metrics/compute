@@ -1,0 +1,190 @@
+import os
+import argparse
+import numpy as np
+import pandas as pd
+
+# ---------- Data Loading ----------
+def load_timeseries(path, max_rows=None):
+    """
+    Load a multivariate time series dataset (CSV/TXT).
+    Assumes the first column is a timestamp and drops it.
+    Missing values are interpolated and filled.
+    Returns:
+        arr: np.ndarray of shape (T, N), rows=time, cols=variables
+    """
+    ext = os.path.splitext(path)[1].lower()
+    if ext in [".csv", ".txt"]:
+        df = pd.read_csv(path) if ext == ".csv" else pd.read_table(path, sep=None, engine="python")
+        if df.shape[1] > 1:
+            df = df.iloc[:, 1:]  # drop first column (timestamp)
+        if max_rows and len(df) > max_rows:
+            df = df.tail(max_rows)
+        df = df.apply(pd.to_numeric, errors="coerce")
+        df = df.interpolate(limit_direction="both").fillna(method="bfill").fillna(method="ffill")
+        arr = df.to_numpy(dtype=float)
+    else:
+        raise ValueError(f"Unsupported file type: {ext}")
+
+    if arr.ndim == 1:
+        arr = arr.reshape(-1, 1)
+
+    # Clean any NaN/Inf
+    arr = np.nan_to_num(arr, nan=0.0, posinf=0.0, neginf=0.0)
+    return arr
+
+# ---------- Similarity Functions ----------
+def cosine_similarity_01(X):
+    """
+    Cosine similarity mapped to [0,1].
+    Input: X (N, B), N=variables, B=window length
+    Output: (N, N) similarity matrix
+    """
+    norms = np.linalg.norm(X, axis=1, keepdims=True) + 1e-12
+    V = X / norms
+    G = V @ V.T
+    G = (G + 1.0) * 0.5
+    np.clip(G, 0.0, 1.0, out=G)
+    return np.nan_to_num(G, nan=0.0, posinf=1.0, neginf=0.0)
+
+def pearson_similarity_01(X):
+    """
+    Pearson correlation mapped to [0,1].
+    Input: X (N, B), N=variables, B=window length
+    Output: (N, N) similarity matrix
+    """
+    N, B = X.shape
+    if B < 2:
+        return np.eye(N)
+
+    Xm = X - X.mean(axis=1, keepdims=True)
+    stds = X.std(axis=1, keepdims=True)
+    stds[stds == 0] = 1e-8  # avoid division by zero
+    Xn = Xm / stds
+    C = (Xn @ Xn.T) / (B - 1)
+
+    C = np.nan_to_num(C, nan=0.0, posinf=1.0, neginf=-1.0)
+    C = (C + 1.0) * 0.5
+    np.clip(C, 0.0, 1.0, out=C)
+    return C
+
+# ---------- TCV Calculation ----------
+def compute_tcv_from_array(arr, window=24, step=1, method="cosine",
+                           normalize="sqrtN", alpha=1.0, scale=1.0):
+    """
+    Compute Temporal Correlation Volatility (TCV) and Temporal Graph Variability (TGV).
+
+    Args:
+        arr: np.ndarray (T, N) time series data
+        window: int, sliding window size
+        step: int, step size for sliding window
+        method: str, "cosine" or "pearson" similarity
+        normalize: str, normalization method
+            - "N": divide by N
+            - "sqrtN": divide by sqrt(N) (recommended)
+            - "minmax": per-dataset min-max normalization
+        alpha: float, power scaling factor (<1 amplifies, >1 compresses)
+        scale: float, linear scaling factor
+
+    Returns:
+        dict with TCV, TGV, N
+    """
+    T, N = arr.shape
+    if T < window + 1:
+        raise ValueError(f"Not enough rows T={T} for window={window}+1.")
+
+    def get_A(t_end):
+        seg = arr[t_end - window + 1 : t_end + 1, :]
+        X = seg.T
+        return cosine_similarity_01(X) if method == "cosine" else pearson_similarity_01(X)
+
+    start = window - 1
+    t_idx = list(range(start, T, step))
+    if len(t_idx) < 2:
+        raise ValueError("Not enough windows to compute differences.")
+
+    A_prev = get_A(t_idx[0])
+    diffs = []
+
+    for idx in t_idx[1:]:
+        A_cur = get_A(idx)
+        diff = A_cur - A_prev
+        frob = np.linalg.norm(diff, ord="fro")
+        diffs.append(frob)
+        A_prev = A_cur
+
+    diffs = np.array(diffs)
+
+    # Normalization
+    if normalize == "N":
+        diffs = diffs / N
+    elif normalize == "sqrtN":
+        diffs = diffs / np.sqrt(N)
+    elif normalize == "minmax":
+        min_val, max_val = diffs.min(), diffs.max()
+        if max_val > min_val:
+            diffs = (diffs - min_val) / (max_val - min_val)
+        else:
+            diffs = np.zeros_like(diffs)
+
+    # Apply power scaling
+    if alpha != 1.0:
+        diffs = np.power(diffs, alpha)
+    # Apply linear scaling
+    if scale != 1.0:
+        diffs = diffs * scale
+
+    tcv = float(np.mean(diffs))
+    tgv = float(np.var(diffs))
+
+    return {"TCV": tcv, "TGV": tgv, "N": int(N)}
+
+# ---------- Output Formatting ----------
+def format_result(path, res, window, step, method, normalize, alpha, scale):
+    base = os.path.basename(path)
+    return (
+        f"{base} | N={res['N']}, B={window}, step={step}, method={method}, "
+        f"normalize={normalize}, alpha={alpha}, scale={scale}\n"
+        f"  -> TCV = {res['TCV']:.6f}   (TGV = {res['TGV']:.6f})"
+    )
+
+# ---------- Main ----------
+def main():
+    ap = argparse.ArgumentParser(description="Compute TCV/TGV for multiple datasets.")
+    ap.add_argument("--window", type=int, default=24, help="Sliding window length")
+    ap.add_argument("--step", type=int, default=1, help="Step size")
+    ap.add_argument("--method", type=str, default="pearson",
+                    choices=["cosine","pearson"], help="Similarity method")
+    ap.add_argument("--normalize", type=str, default="sqrtN",
+                    choices=["N","sqrtN","minmax"], help="Normalization method")
+    ap.add_argument("--alpha", type=float, default=1.0, help="Power scaling factor")
+    ap.add_argument("--scale", type=float, default=1.0, help="Linear scaling factor")
+    args = ap.parse_args()
+
+    datasets = [
+        "Germany_processed_0.csv",
+        "France_processed_0.csv",
+        "exchange_rate.txt",
+        "electricity.csv",
+        "solar.csv",
+        "traffic.csv",
+        "TMS_traffic_counts.csv",
+        "syn-original/SYNTHETIC_VERY_HARD/synthetic_time_series.csv",
+        "syn-original/SYNTHETIC_HARD/synthetic_time_series.csv",
+        "syn-original/SYNTHETIC_MEDIUM/synthetic_time_series.csv",
+        "syn-original/SYNTHETIC_EASY/synthetic_time_series.csv"
+    ]
+
+    for p in datasets:
+        try:
+            arr = load_timeseries(p, max_rows=5000)
+            res = compute_tcv_from_array(arr, window=args.window, step=args.step,
+                                         method=args.method, normalize=args.normalize,
+                                         alpha=args.alpha, scale=args.scale)
+            print(format_result(p, res, args.window, args.step, args.method,
+                                args.normalize, args.alpha, args.scale))
+        except Exception as e:
+            print(f"[ERROR] {p}: {e}")
+
+if __name__ == "__main__":
+    main()
+

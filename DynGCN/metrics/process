@@ -1,0 +1,105 @@
+import os
+import argparse
+import numpy as np
+import pandas as pd
+
+# ---------- Data Loader ----------
+def load_timeseries(path, max_rows=None):
+    """
+    Load multivariate time series (CSV/TXT), drop timestamp column.
+    Returns array (T, N).
+    """
+    ext = os.path.splitext(path)[1].lower()
+    if ext in [".csv", ".txt"]:
+        df = pd.read_csv(path) if ext == ".csv" else pd.read_table(path, sep=None, engine="python")
+        if df.shape[1] > 1:
+            df = df.iloc[:, 1:]  # drop timestamp
+        if max_rows and len(df) > max_rows:
+            df = df.tail(max_rows)
+        df = df.apply(pd.to_numeric, errors="coerce")
+        df = df.interpolate(limit_direction="both").fillna(method="bfill").fillna(method="ffill")
+        arr = df.to_numpy(dtype=float)
+    else:
+        raise ValueError(f"Unsupported file type: {ext}")
+    if arr.ndim == 1:
+        arr = arr.reshape(-1, 1)
+    return np.nan_to_num(arr, nan=0.0, posinf=0.0, neginf=0.0)
+
+# ---------- Similarity ----------
+def cosine_similarity_01(X):
+    norms = np.linalg.norm(X, axis=1, keepdims=True) + 1e-12
+    V = X / norms
+    G = V @ V.T
+    G = (G + 1.0) * 0.5
+    np.clip(G, 0.0, 1.0, out=G)
+    return np.nan_to_num(G, nan=0.0)
+
+def pearson_similarity_01(X):
+    N, B = X.shape
+    if B < 2:
+        return np.eye(N)
+    Xm = X - X.mean(axis=1, keepdims=True)
+    stds = X.std(axis=1, keepdims=True)
+    stds[stds == 0] = 1e-8
+    Xn = Xm / stds
+    C = (Xn @ Xn.T) / (B - 1)
+    C = np.nan_to_num(C, nan=0.0)
+    C = (C + 1.0) * 0.5
+    np.clip(C, 0.0, 1.0, out=C)
+    return C
+
+# ---------- Paper-Exact TCV ----------
+def compute_tcv_from_array(arr, window=24, step=1, method="cosine"):
+    """
+    Compute TCV strictly as defined in the paper:
+        TCV = (1 / (T * N^2)) * sum_t ||A_{t+1} - A_t||_F
+    where ||.||_F is the Frobenius norm.
+    """
+    T, N = arr.shape
+    if T < window + 1:
+        raise ValueError(f"Not enough rows T={T} for window={window}+1.")
+
+    def get_A(t_end):
+        seg = arr[t_end - window + 1 : t_end + 1, :]
+        X = seg.T
+        return cosine_similarity_01(X) if method == "cosine" else pearson_similarity_01(X)
+
+    start = window - 1
+    t_idx = list(range(start, T, step))
+    if len(t_idx) < 2:
+        raise ValueError("Not enough windows to compute differences.")
+
+    A_prev = get_A(t_idx[0])
+    accum = 0.0
+    for idx in t_idx[1:]:
+        A_cur = get_A(idx)
+        diff = A_cur - A_prev
+        frob = np.linalg.norm(diff, ord="fro")
+        accum += frob
+        A_prev = A_cur
+
+    num_diffs = len(t_idx) - 1
+    tcv = accum / (num_diffs * N * N)
+    return {"TCV": tcv, "N": int(N), "num_windows": len(t_idx)}
+
+# ---------- Main ----------
+def main():
+    ap = argparse.ArgumentParser(description="Compute paper-exact TCV for multivariate time series.")
+    ap.add_argument("paths", nargs="+", help="Dataset paths")
+    ap.add_argument("--window", type=int, default=24, help="Sliding window length")
+    ap.add_argument("--step", type=int, default=1, help="Step size")
+    ap.add_argument("--method", type=str, default="pearson", choices=["cosine","pearson"], help="Similarity measure")
+    args = ap.parse_args()
+
+    for p in args.paths:
+        try:
+            arr = load_timeseries(p, max_rows=5000)
+            res = compute_tcv_from_array(arr, window=args.window, step=args.step, method=args.method)
+            base = os.path.basename(p)
+            print(f"{base} | N={res['N']}, windows={res['num_windows']}, method={args.method}")
+            print(f"  -> TCV = {res['TCV']:.6f}")
+        except Exception as e:
+            print(f"[ERROR] {p}: {e}")
+
+if __name__ == "__main__":
+    main()
