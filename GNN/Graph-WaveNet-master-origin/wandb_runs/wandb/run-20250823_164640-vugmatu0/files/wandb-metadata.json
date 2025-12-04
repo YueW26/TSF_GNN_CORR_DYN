@@ -1,0 +1,121 @@
+{
+  "os":  "Linux-6.1.0-25-amd64-x86_64-with-glibc2.17",
+  "python":  "3.8.20",
+  "startedAt":  "2025-08-23T14:46:40.572243Z",
+  "args":  [
+    "--project",
+    "GWN-Grid-F-11",
+    "--name",
+    "Baseline_seq96_pred96_lr0.001_do0.3_hid32_wd0.0001",
+    "--config",
+    "{\n  \"data\": \"data/FRANCE\",\"device\": \"cuda:0\",\"epochs\": 5,\"batch_size\": 64,\n  \"seq_length\": 96,\"pred_length\": 96,\"learning_rate\": 0.001,\"dropout\": 0.3,\n  \"nhid\": 32,\"weight_decay\": 0.0001,\"adjtype\": \"doubletransition\",\n  \"gcn_bool\": true,\"addaptadj\": true,\"randomadj\": true,\"print_every\": 50\n}",
+    "--cmd",
+    "python train.py     --data data/FRANCE --device cuda:0 --batch_size 64 --epochs 5     --seq_length 96 --pred_length 96     --learning_rate 0.001 --dropout 0.3 --nhid 32     --weight_decay 0.0001 --print_every 50     --gcn_bool --addaptadj --randomadj --adjtype doubletransition"
+  ],
+  "program":  "_wandb_proxy.py",
+  "codePath":  "GNN/Graph-WaveNet-master-origin/_wandb_proxy.py",
+  "git":  {
+    "remote":  "git@github.com:YueW26/EnergyTSF.git",
+    "commit":  "cfb6640bb7d895cdc821081add69b06ca8ed1cc9"
+  },
+  "email":  "gabiyueyue26@gmail.com",
+  "root":  "./wandb_runs",
+  "host":  "aifb-websci-gpunode2",
+  "username":  "cc7738",
+  "executable":  "/mnt/webscistorage/cc7738/anaconda3/envs/Energy-TSF/bin/python",
+  "codePathLocal":  "_wandb_proxy.py",
+  "cpu_count":  64,
+  "cpu_count_logical":  128,
+  "gpu":  "[, , , ]",
+  "gpu_count":  4,
+  "disk":  {
+    "/":  {
+      "total":  "3777220370432",
+      "used":  "82913247232"
+    }
+  },
+  "memory":  {
+    "total":  "1082026676224"
+  },
+  "cpu":  {
+    "count":  64,
+    "countLogical":  128
+  },
+  "gpu_nvidia":  [
+    {
+      "memoryTotal":  "25757220864",
+      "cudaCores":  16384,
+      "architecture":  "Ada"
+    },
+    {
+      "memoryTotal":  "25757220864",
+      "cudaCores":  16384,
+      "architecture":  "Ada"
+    },
+    {
+      "memoryTotal":  "25757220864",
+      "cudaCores":  16384,
+      "architecture":  "Ada"
+    },
+    {
+      "memoryTotal":  "25757220864",
+      "cudaCores":  16384,
+      "architecture":  "Ada"
+    }
+  ],
+  "slurm":  {
+    "cluster_name":  "aifb-websci-cluster",
+    "conf":  "/etc/slurm/slurm.conf",
+    "cpu_bind":  "quiet,mask_cpu:0x3FFFFFC03FFFFFC03FFFFFC03FFFFFC0",
+    "cpu_bind_list":  "0x3FFFFFC03FFFFFC03FFFFFC03FFFFFC0",
+    "cpu_bind_type":  "mask_cpu:",
+    "cpu_bind_verbose":  "quiet",
+    "cpus_on_node":  "96",
+    "gpus":  "4",
+    "gpus_on_node":  "4",
+    "gtids":  "0",
+    "job_cpus_per_node":  "96",
+    "job_end_time":  "1755974171",
+    "job_gid":  "44350",
+    "job_group":  "AIFB-Users-IDM",
+    "job_id":  "15298",
+    "job_name":  "bash",
+    "job_nodelist":  "aifb-websci-gpunode2",
+    "job_num_nodes":  "1",
+    "job_partition":  "4090",
+    "job_start_time":  "1755930971",
+    "job_uid":  "243786",
+    "job_user":  "cc7738",
+    "jobid":  "15298",
+    "launch_node_ipaddr":  "129.13.152.71",
+    "localid":  "0",
+    "nnodes":  "1",
+    "nodeid":  "0",
+    "nodelist":  "aifb-websci-gpunode2",
+    "nprocs":  "1",
+    "ntasks":  "1",
+    "prio_process":  "0",
+    "procid":  "0",
+    "pty_port":  "45407",
+    "pty_win_col":  "105",
+    "pty_win_row":  "15",
+    "srun_comm_host":  "129.13.152.71",
+    "srun_comm_port":  "36455",
+    "step_gpus":  "1,2,3,4",
+    "step_id":  "0",
+    "step_launcher_port":  "36455",
+    "step_nodelist":  "aifb-websci-gpunode2",
+    "step_num_nodes":  "1",
+    "step_num_tasks":  "1",
+    "step_tasks_per_node":  "1",
+    "stepid":  "0",
+    "submit_dir":  "/mnt/webscistorage/cc7738/ws_chen/ANP4Link",
+    "submit_host":  "aifb-websci-loginnode1",
+    "task_pid":  "743935",
+    "tasks_per_node":  "1",
+    "topology_addr":  "aifb-websci-gpunode2",
+    "topology_addr_pattern":  "node",
+    "umask":  "0022"
+  },
+  "cudaVersion":  "12.5"
+}

@@ -1,0 +1,18 @@
+{"time":"2025-08-23T16:45:49.596529393+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-23T16:45:49.596560033+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250823_164549-aq16payl/logs/debug-core.log"}
+{"time":"2025-08-23T16:45:49.597897831+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-23T16:45:49.606028066+02:00","level":"INFO","msg":"created new stream","id":"aq16payl"}
+{"time":"2025-08-23T16:45:49.606069065+02:00","level":"INFO","msg":"stream: started","id":"aq16payl"}
+{"time":"2025-08-23T16:45:49.606111805+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"aq16payl"}}
+{"time":"2025-08-23T16:45:49.606089495+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"aq16payl"}}
+{"time":"2025-08-23T16:45:49.606232903+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"aq16payl"}}
+{"time":"2025-08-23T16:45:49.9955207+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-23T16:45:50.000459548+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-23T16:45:57.771504806+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-23T16:45:58.172083315+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-23T16:45:58.86799856+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-23T16:46:00.083065779+02:00","level":"INFO","msg":"stream: closing","id":"aq16payl"}
+{"time":"2025-08-23T16:46:00.083100859+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"aq16payl"}}
+{"time":"2025-08-23T16:46:00.083124758+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"aq16payl"}}
+{"time":"2025-08-23T16:46:00.083160338+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"aq16payl"}}
+{"time":"2025-08-23T16:46:00.085034267+02:00","level":"INFO","msg":"stream: closed","id":"aq16payl"}

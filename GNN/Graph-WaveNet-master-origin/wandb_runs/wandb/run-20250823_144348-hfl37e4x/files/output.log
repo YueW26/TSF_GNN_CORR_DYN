@@ -1,0 +1,218 @@
+检测到原始France数据集
+配置参数: 节点数=10, 邻接矩阵=data/sensor_graph/adj_mx_france.pkl
+运行单个实验...
+配置: seq_length=96, pred_length=96, enhance=none
+为 seq_length=96, pred_length=96 生成数据...
+FRANCE数据已存在且序列长度匹配 (seq_length=96)
+Namespace(addaptadj=True, adjdata='data/sensor_graph/adj_mx_france.pkl', adjtype='doubletransition', aptonly=False, batch_size=64, data='data/FRANCE', device='cuda:0', dropout=0.3, enhance='none', epochs=5, expid=1, gcn_bool=True, graph_alpha=0.5, graph_mode='lowpass', in_dim=2, learning_rate=0.0005, nhid=64, num_nodes=10, pred_length=96, print_every=50, randomadj=True, run_multiple_experiments=False, save='./garage/france/', seq_length=96, series_kernel=25, weight_decay=0.0001)
+start training...
+Iter: 000, Train Loss: 0.0342, Train MAPE: 0.2460, Train RMSE: 0.0468
+Iter: 050, Train Loss: 0.0186, Train MAPE: 0.1158, Train RMSE: 0.0321
+Iter: 100, Train Loss: 0.0174, Train MAPE: 0.1073, Train RMSE: 0.0292
+Iter: 150, Train Loss: 0.0173, Train MAPE: 0.1093, Train RMSE: 0.0282
+Iter: 200, Train Loss: 0.0165, Train MAPE: 0.1020, Train RMSE: 0.0293
+Iter: 250, Train Loss: 0.0157, Train MAPE: 0.0972, Train RMSE: 0.0256
+Iter: 300, Train Loss: 0.0162, Train MAPE: 0.1000, Train RMSE: 0.0267
+Iter: 350, Train Loss: 0.0162, Train MAPE: 0.1052, Train RMSE: 0.0262
+Iter: 400, Train Loss: 0.0173, Train MAPE: 0.1111, Train RMSE: 0.0303
+Iter: 450, Train Loss: 0.0171, Train MAPE: 0.1034, Train RMSE: 0.0304
+Iter: 500, Train Loss: 0.0156, Train MAPE: 0.1020, Train RMSE: 0.0248
+Iter: 550, Train Loss: 0.0162, Train MAPE: 0.1010, Train RMSE: 0.0286
+Iter: 600, Train Loss: 0.0167, Train MAPE: 0.1057, Train RMSE: 0.0278
+Iter: 650, Train Loss: 0.0163, Train MAPE: 0.1064, Train RMSE: 0.0259
+Iter: 700, Train Loss: 0.0172, Train MAPE: 0.1054, Train RMSE: 0.0324
+Iter: 750, Train Loss: 0.0160, Train MAPE: 0.0993, Train RMSE: 0.0321
+Iter: 800, Train Loss: 0.0164, Train MAPE: 0.1076, Train RMSE: 0.0260
+Iter: 850, Train Loss: 0.0153, Train MAPE: 0.0947, Train RMSE: 0.0256
+Iter: 900, Train Loss: 0.0147, Train MAPE: 0.0998, Train RMSE: 0.0240
+Epoch: 001, Inference Time: 4.8384 secs
+Epoch: 001, Train Loss: 0.0167, Train MAPE: 0.1062, Train RMSE: 0.0278, Valid Loss: 0.0181, Valid MAPE: 0.1195, Valid RMSE: 0.0291, Training Time: 111.2922/epoch
+Iter: 000, Train Loss: 0.0147, Train MAPE: 0.0926, Train RMSE: 0.0243
+Iter: 050, Train Loss: 0.0157, Train MAPE: 0.1052, Train RMSE: 0.0245
+Iter: 100, Train Loss: 0.0165, Train MAPE: 0.0980, Train RMSE: 0.0315
+Iter: 150, Train Loss: 0.0164, Train MAPE: 0.1043, Train RMSE: 0.0269
+Iter: 200, Train Loss: 0.0154, Train MAPE: 0.0961, Train RMSE: 0.0268
+Iter: 250, Train Loss: 0.0162, Train MAPE: 0.1023, Train RMSE: 0.0277
+Iter: 300, Train Loss: 0.0145, Train MAPE: 0.0923, Train RMSE: 0.0239
+Iter: 350, Train Loss: 0.0182, Train MAPE: 0.1104, Train RMSE: 0.0325
+Iter: 400, Train Loss: 0.0153, Train MAPE: 0.1047, Train RMSE: 0.0242
+Iter: 450, Train Loss: 0.0152, Train MAPE: 0.0945, Train RMSE: 0.0250
+Iter: 500, Train Loss: 0.0157, Train MAPE: 0.0995, Train RMSE: 0.0261
+Iter: 550, Train Loss: 0.0163, Train MAPE: 0.1006, Train RMSE: 0.0295
+Iter: 600, Train Loss: 0.0150, Train MAPE: 0.0988, Train RMSE: 0.0240
+Iter: 650, Train Loss: 0.0166, Train MAPE: 0.1032, Train RMSE: 0.0297
+Iter: 700, Train Loss: 0.0149, Train MAPE: 0.0978, Train RMSE: 0.0253
+Iter: 750, Train Loss: 0.0154, Train MAPE: 0.0978, Train RMSE: 0.0259
+Iter: 800, Train Loss: 0.0153, Train MAPE: 0.0988, Train RMSE: 0.0271
+Iter: 850, Train Loss: 0.0156, Train MAPE: 0.0999, Train RMSE: 0.0261
+Iter: 900, Train Loss: 0.0153, Train MAPE: 0.0984, Train RMSE: 0.0247
+Epoch: 002, Inference Time: 4.4953 secs
+Epoch: 002, Train Loss: 0.0158, Train MAPE: 0.1005, Train RMSE: 0.0267, Valid Loss: 0.0181, Valid MAPE: 0.1154, Valid RMSE: 0.0293, Training Time: 109.2165/epoch
+Iter: 000, Train Loss: 0.0163, Train MAPE: 0.1029, Train RMSE: 0.0267
+Iter: 050, Train Loss: 0.0160, Train MAPE: 0.1035, Train RMSE: 0.0252
+Iter: 100, Train Loss: 0.0155, Train MAPE: 0.0989, Train RMSE: 0.0253
+Iter: 150, Train Loss: 0.0166, Train MAPE: 0.1011, Train RMSE: 0.0312
+Iter: 200, Train Loss: 0.0153, Train MAPE: 0.0952, Train RMSE: 0.0246
+Iter: 250, Train Loss: 0.0167, Train MAPE: 0.1049, Train RMSE: 0.0275
+Iter: 300, Train Loss: 0.0158, Train MAPE: 0.1034, Train RMSE: 0.0259
+Iter: 350, Train Loss: 0.0171, Train MAPE: 0.1043, Train RMSE: 0.0339
+Iter: 400, Train Loss: 0.0156, Train MAPE: 0.1028, Train RMSE: 0.0255
+Iter: 450, Train Loss: 0.0182, Train MAPE: 0.1096, Train RMSE: 0.0353
+Iter: 500, Train Loss: 0.0164, Train MAPE: 0.1043, Train RMSE: 0.0285
+Iter: 550, Train Loss: 0.0158, Train MAPE: 0.1015, Train RMSE: 0.0287
+Iter: 600, Train Loss: 0.0157, Train MAPE: 0.0968, Train RMSE: 0.0263
+Iter: 650, Train Loss: 0.0158, Train MAPE: 0.0949, Train RMSE: 0.0316
+Iter: 700, Train Loss: 0.0165, Train MAPE: 0.1009, Train RMSE: 0.0298
+Iter: 750, Train Loss: 0.0168, Train MAPE: 0.1031, Train RMSE: 0.0283
+Iter: 800, Train Loss: 0.0163, Train MAPE: 0.1075, Train RMSE: 0.0274
+Iter: 850, Train Loss: 0.0166, Train MAPE: 0.1034, Train RMSE: 0.0273
+Iter: 900, Train Loss: 0.0148, Train MAPE: 0.0988, Train RMSE: 0.0242
+Epoch: 003, Inference Time: 4.7455 secs
+Epoch: 003, Train Loss: 0.0158, Train MAPE: 0.1006, Train RMSE: 0.0266, Valid Loss: 0.0179, Valid MAPE: 0.1159, Valid RMSE: 0.0289, Training Time: 108.8915/epoch
+Iter: 000, Train Loss: 0.0149, Train MAPE: 0.0954, Train RMSE: 0.0242
+Iter: 050, Train Loss: 0.0171, Train MAPE: 0.1035, Train RMSE: 0.0288
+Iter: 100, Train Loss: 0.0150, Train MAPE: 0.0945, Train RMSE: 0.0249
+Iter: 150, Train Loss: 0.0155, Train MAPE: 0.0969, Train RMSE: 0.0274
+Iter: 200, Train Loss: 0.0158, Train MAPE: 0.0973, Train RMSE: 0.0261
+Iter: 250, Train Loss: 0.0146, Train MAPE: 0.0927, Train RMSE: 0.0242
+Iter: 300, Train Loss: 0.0161, Train MAPE: 0.0992, Train RMSE: 0.0268
+Iter: 350, Train Loss: 0.0158, Train MAPE: 0.0959, Train RMSE: 0.0300
+Iter: 400, Train Loss: 0.0161, Train MAPE: 0.1038, Train RMSE: 0.0268
+Iter: 450, Train Loss: 0.0173, Train MAPE: 0.1097, Train RMSE: 0.0314
+Iter: 500, Train Loss: 0.0156, Train MAPE: 0.0989, Train RMSE: 0.0254
+Iter: 550, Train Loss: 0.0174, Train MAPE: 0.1027, Train RMSE: 0.0315
+Iter: 600, Train Loss: 0.0165, Train MAPE: 0.0975, Train RMSE: 0.0326
+Iter: 650, Train Loss: 0.0159, Train MAPE: 0.1038, Train RMSE: 0.0257
+Iter: 700, Train Loss: 0.0151, Train MAPE: 0.0959, Train RMSE: 0.0245
+Iter: 750, Train Loss: 0.0169, Train MAPE: 0.1107, Train RMSE: 0.0277
+Iter: 800, Train Loss: 0.0155, Train MAPE: 0.0985, Train RMSE: 0.0259
+Iter: 850, Train Loss: 0.0161, Train MAPE: 0.0995, Train RMSE: 0.0292
+Iter: 900, Train Loss: 0.0156, Train MAPE: 0.1029, Train RMSE: 0.0267
+Epoch: 004, Inference Time: 4.4881 secs
+Epoch: 004, Train Loss: 0.0158, Train MAPE: 0.1005, Train RMSE: 0.0265, Valid Loss: 0.0178, Valid MAPE: 0.1122, Valid RMSE: 0.0288, Training Time: 109.1548/epoch
+Iter: 000, Train Loss: 0.0160, Train MAPE: 0.1013, Train RMSE: 0.0260
+Iter: 050, Train Loss: 0.0143, Train MAPE: 0.0941, Train RMSE: 0.0225
+Iter: 100, Train Loss: 0.0145, Train MAPE: 0.0933, Train RMSE: 0.0235
+Iter: 150, Train Loss: 0.0150, Train MAPE: 0.0931, Train RMSE: 0.0246
+Iter: 200, Train Loss: 0.0160, Train MAPE: 0.1025, Train RMSE: 0.0268
+Iter: 250, Train Loss: 0.0158, Train MAPE: 0.0983, Train RMSE: 0.0303
+Iter: 300, Train Loss: 0.0155, Train MAPE: 0.0972, Train RMSE: 0.0253
+Iter: 350, Train Loss: 0.0165, Train MAPE: 0.1013, Train RMSE: 0.0291
+Iter: 400, Train Loss: 0.0163, Train MAPE: 0.1082, Train RMSE: 0.0263
+Iter: 450, Train Loss: 0.0158, Train MAPE: 0.0993, Train RMSE: 0.0254
+Iter: 500, Train Loss: 0.0153, Train MAPE: 0.0962, Train RMSE: 0.0265
+Iter: 550, Train Loss: 0.0161, Train MAPE: 0.1047, Train RMSE: 0.0275
+Iter: 600, Train Loss: 0.0151, Train MAPE: 0.0983, Train RMSE: 0.0239
+Iter: 650, Train Loss: 0.0145, Train MAPE: 0.0921, Train RMSE: 0.0234
+Iter: 700, Train Loss: 0.0155, Train MAPE: 0.0994, Train RMSE: 0.0247
+Iter: 750, Train Loss: 0.0163, Train MAPE: 0.1000, Train RMSE: 0.0266
+Iter: 800, Train Loss: 0.0160, Train MAPE: 0.1000, Train RMSE: 0.0258
+Iter: 850, Train Loss: 0.0150, Train MAPE: 0.0962, Train RMSE: 0.0249
+Iter: 900, Train Loss: 0.0157, Train MAPE: 0.0986, Train RMSE: 0.0256
+Epoch: 005, Inference Time: 4.4771 secs
+Epoch: 005, Train Loss: 0.0158, Train MAPE: 0.1001, Train RMSE: 0.0264, Valid Loss: 0.0178, Valid MAPE: 0.1162, Valid RMSE: 0.0284, Training Time: 108.9952/epoch
+Average Training Time: 109.5100 secs/epoch
+Average Inference Time: 4.6089 secs
+Training finished
+The valid loss on best model is 0.0178
+Evaluate best model on test data for horizon 1, Test MAE: 0.0072, Test MAPE: 0.0539, Test RMSE: 0.0151
+Evaluate best model on test data for horizon 2, Test MAE: 0.0093, Test MAPE: 0.0679, Test RMSE: 0.0185
+Evaluate best model on test data for horizon 3, Test MAE: 0.0108, Test MAPE: 0.0789, Test RMSE: 0.0211
+Evaluate best model on test data for horizon 4, Test MAE: 0.0120, Test MAPE: 0.0873, Test RMSE: 0.0229
+Evaluate best model on test data for horizon 5, Test MAE: 0.0128, Test MAPE: 0.0937, Test RMSE: 0.0242
+Evaluate best model on test data for horizon 6, Test MAE: 0.0132, Test MAPE: 0.0973, Test RMSE: 0.0249
+Evaluate best model on test data for horizon 7, Test MAE: 0.0134, Test MAPE: 0.0992, Test RMSE: 0.0252
+Evaluate best model on test data for horizon 8, Test MAE: 0.0136, Test MAPE: 0.1010, Test RMSE: 0.0256
+Evaluate best model on test data for horizon 9, Test MAE: 0.0140, Test MAPE: 0.1044, Test RMSE: 0.0263
+Evaluate best model on test data for horizon 10, Test MAE: 0.0145, Test MAPE: 0.1082, Test RMSE: 0.0270
+Evaluate best model on test data for horizon 11, Test MAE: 0.0147, Test MAPE: 0.1108, Test RMSE: 0.0274
+Evaluate best model on test data for horizon 12, Test MAE: 0.0148, Test MAPE: 0.1125, Test RMSE: 0.0276
+Evaluate best model on test data for horizon 13, Test MAE: 0.0148, Test MAPE: 0.1140, Test RMSE: 0.0278
+Evaluate best model on test data for horizon 14, Test MAE: 0.0149, Test MAPE: 0.1141, Test RMSE: 0.0278
+Evaluate best model on test data for horizon 15, Test MAE: 0.0149, Test MAPE: 0.1141, Test RMSE: 0.0279
+Evaluate best model on test data for horizon 16, Test MAE: 0.0150, Test MAPE: 0.1149, Test RMSE: 0.0279
+Evaluate best model on test data for horizon 17, Test MAE: 0.0152, Test MAPE: 0.1163, Test RMSE: 0.0281
+Evaluate best model on test data for horizon 18, Test MAE: 0.0153, Test MAPE: 0.1176, Test RMSE: 0.0283
+Evaluate best model on test data for horizon 19, Test MAE: 0.0153, Test MAPE: 0.1179, Test RMSE: 0.0283
+Evaluate best model on test data for horizon 20, Test MAE: 0.0152, Test MAPE: 0.1182, Test RMSE: 0.0281
+Evaluate best model on test data for horizon 21, Test MAE: 0.0152, Test MAPE: 0.1188, Test RMSE: 0.0281
+Evaluate best model on test data for horizon 22, Test MAE: 0.0151, Test MAPE: 0.1188, Test RMSE: 0.0282
+Evaluate best model on test data for horizon 23, Test MAE: 0.0149, Test MAPE: 0.1186, Test RMSE: 0.0280
+Evaluate best model on test data for horizon 24, Test MAE: 0.0150, Test MAPE: 0.1191, Test RMSE: 0.0280
+Evaluate best model on test data for horizon 25, Test MAE: 0.0155, Test MAPE: 0.1224, Test RMSE: 0.0286
+Evaluate best model on test data for horizon 26, Test MAE: 0.0161, Test MAPE: 0.1261, Test RMSE: 0.0296
+Evaluate best model on test data for horizon 27, Test MAE: 0.0167, Test MAPE: 0.1295, Test RMSE: 0.0304
+Evaluate best model on test data for horizon 28, Test MAE: 0.0171, Test MAPE: 0.1322, Test RMSE: 0.0310
+Evaluate best model on test data for horizon 29, Test MAE: 0.0174, Test MAPE: 0.1341, Test RMSE: 0.0314
+Evaluate best model on test data for horizon 30, Test MAE: 0.0175, Test MAPE: 0.1346, Test RMSE: 0.0316
+Evaluate best model on test data for horizon 31, Test MAE: 0.0174, Test MAPE: 0.1343, Test RMSE: 0.0316
+Evaluate best model on test data for horizon 32, Test MAE: 0.0175, Test MAPE: 0.1344, Test RMSE: 0.0317
+Evaluate best model on test data for horizon 33, Test MAE: 0.0177, Test MAPE: 0.1356, Test RMSE: 0.0320
+Evaluate best model on test data for horizon 34, Test MAE: 0.0179, Test MAPE: 0.1369, Test RMSE: 0.0322
+Evaluate best model on test data for horizon 35, Test MAE: 0.0179, Test MAPE: 0.1380, Test RMSE: 0.0323
+Evaluate best model on test data for horizon 36, Test MAE: 0.0180, Test MAPE: 0.1379, Test RMSE: 0.0323
+Evaluate best model on test data for horizon 37, Test MAE: 0.0180, Test MAPE: 0.1387, Test RMSE: 0.0323
+Evaluate best model on test data for horizon 38, Test MAE: 0.0179, Test MAPE: 0.1382, Test RMSE: 0.0322
+Evaluate best model on test data for horizon 39, Test MAE: 0.0178, Test MAPE: 0.1375, Test RMSE: 0.0321
+Evaluate best model on test data for horizon 40, Test MAE: 0.0178, Test MAPE: 0.1373, Test RMSE: 0.0320
+Evaluate best model on test data for horizon 41, Test MAE: 0.0179, Test MAPE: 0.1384, Test RMSE: 0.0321
+Evaluate best model on test data for horizon 42, Test MAE: 0.0181, Test MAPE: 0.1389, Test RMSE: 0.0323
+Evaluate best model on test data for horizon 43, Test MAE: 0.0180, Test MAPE: 0.1392, Test RMSE: 0.0322
+Evaluate best model on test data for horizon 44, Test MAE: 0.0180, Test MAPE: 0.1396, Test RMSE: 0.0321
+Evaluate best model on test data for horizon 45, Test MAE: 0.0179, Test MAPE: 0.1404, Test RMSE: 0.0320
+Evaluate best model on test data for horizon 46, Test MAE: 0.0179, Test MAPE: 0.1403, Test RMSE: 0.0319
+Evaluate best model on test data for horizon 47, Test MAE: 0.0177, Test MAPE: 0.1396, Test RMSE: 0.0317
+Evaluate best model on test data for horizon 48, Test MAE: 0.0177, Test MAPE: 0.1399, Test RMSE: 0.0317
+Evaluate best model on test data for horizon 49, Test MAE: 0.0180, Test MAPE: 0.1420, Test RMSE: 0.0320
+Evaluate best model on test data for horizon 50, Test MAE: 0.0184, Test MAPE: 0.1440, Test RMSE: 0.0325
+Evaluate best model on test data for horizon 51, Test MAE: 0.0187, Test MAPE: 0.1451, Test RMSE: 0.0329
+Evaluate best model on test data for horizon 52, Test MAE: 0.0189, Test MAPE: 0.1451, Test RMSE: 0.0333
+Evaluate best model on test data for horizon 53, Test MAE: 0.0190, Test MAPE: 0.1460, Test RMSE: 0.0335
+Evaluate best model on test data for horizon 54, Test MAE: 0.0190, Test MAPE: 0.1453, Test RMSE: 0.0336
+Evaluate best model on test data for horizon 55, Test MAE: 0.0189, Test MAPE: 0.1444, Test RMSE: 0.0336
+Evaluate best model on test data for horizon 56, Test MAE: 0.0189, Test MAPE: 0.1443, Test RMSE: 0.0335
+Evaluate best model on test data for horizon 57, Test MAE: 0.0191, Test MAPE: 0.1449, Test RMSE: 0.0337
+Evaluate best model on test data for horizon 58, Test MAE: 0.0191, Test MAPE: 0.1454, Test RMSE: 0.0338
+Evaluate best model on test data for horizon 59, Test MAE: 0.0191, Test MAPE: 0.1454, Test RMSE: 0.0339
+Evaluate best model on test data for horizon 60, Test MAE: 0.0191, Test MAPE: 0.1450, Test RMSE: 0.0339
+Evaluate best model on test data for horizon 61, Test MAE: 0.0190, Test MAPE: 0.1453, Test RMSE: 0.0338
+Evaluate best model on test data for horizon 62, Test MAE: 0.0191, Test MAPE: 0.1445, Test RMSE: 0.0339
+Evaluate best model on test data for horizon 63, Test MAE: 0.0190, Test MAPE: 0.1439, Test RMSE: 0.0338
+Evaluate best model on test data for horizon 64, Test MAE: 0.0190, Test MAPE: 0.1438, Test RMSE: 0.0336
+Evaluate best model on test data for horizon 65, Test MAE: 0.0190, Test MAPE: 0.1445, Test RMSE: 0.0336
+Evaluate best model on test data for horizon 66, Test MAE: 0.0190, Test MAPE: 0.1452, Test RMSE: 0.0336
+Evaluate best model on test data for horizon 67, Test MAE: 0.0190, Test MAPE: 0.1451, Test RMSE: 0.0337
+Evaluate best model on test data for horizon 68, Test MAE: 0.0190, Test MAPE: 0.1453, Test RMSE: 0.0335
+Evaluate best model on test data for horizon 69, Test MAE: 0.0189, Test MAPE: 0.1461, Test RMSE: 0.0335
+Evaluate best model on test data for horizon 70, Test MAE: 0.0189, Test MAPE: 0.1461, Test RMSE: 0.0334
+Evaluate best model on test data for horizon 71, Test MAE: 0.0189, Test MAPE: 0.1453, Test RMSE: 0.0333
+Evaluate best model on test data for horizon 72, Test MAE: 0.0188, Test MAPE: 0.1457, Test RMSE: 0.0332
+Evaluate best model on test data for horizon 73, Test MAE: 0.0190, Test MAPE: 0.1472, Test RMSE: 0.0333
+Evaluate best model on test data for horizon 74, Test MAE: 0.0192, Test MAPE: 0.1481, Test RMSE: 0.0337
+Evaluate best model on test data for horizon 75, Test MAE: 0.0193, Test MAPE: 0.1489, Test RMSE: 0.0339
+Evaluate best model on test data for horizon 76, Test MAE: 0.0194, Test MAPE: 0.1483, Test RMSE: 0.0341
+Evaluate best model on test data for horizon 77, Test MAE: 0.0196, Test MAPE: 0.1483, Test RMSE: 0.0343
+Evaluate best model on test data for horizon 78, Test MAE: 0.0196, Test MAPE: 0.1479, Test RMSE: 0.0344
+Evaluate best model on test data for horizon 79, Test MAE: 0.0195, Test MAPE: 0.1472, Test RMSE: 0.0343
+Evaluate best model on test data for horizon 80, Test MAE: 0.0195, Test MAPE: 0.1469, Test RMSE: 0.0342
+Evaluate best model on test data for horizon 81, Test MAE: 0.0196, Test MAPE: 0.1475, Test RMSE: 0.0344
+Evaluate best model on test data for horizon 82, Test MAE: 0.0196, Test MAPE: 0.1484, Test RMSE: 0.0345
+Evaluate best model on test data for horizon 83, Test MAE: 0.0196, Test MAPE: 0.1482, Test RMSE: 0.0347
+Evaluate best model on test data for horizon 84, Test MAE: 0.0196, Test MAPE: 0.1483, Test RMSE: 0.0347
+Evaluate best model on test data for horizon 85, Test MAE: 0.0196, Test MAPE: 0.1485, Test RMSE: 0.0347
+Evaluate best model on test data for horizon 86, Test MAE: 0.0196, Test MAPE: 0.1485, Test RMSE: 0.0347
+Evaluate best model on test data for horizon 87, Test MAE: 0.0195, Test MAPE: 0.1474, Test RMSE: 0.0346
+Evaluate best model on test data for horizon 88, Test MAE: 0.0195, Test MAPE: 0.1471, Test RMSE: 0.0345
+Evaluate best model on test data for horizon 89, Test MAE: 0.0195, Test MAPE: 0.1483, Test RMSE: 0.0344
+Evaluate best model on test data for horizon 90, Test MAE: 0.0196, Test MAPE: 0.1492, Test RMSE: 0.0345
+Evaluate best model on test data for horizon 91, Test MAE: 0.0196, Test MAPE: 0.1492, Test RMSE: 0.0344
+Evaluate best model on test data for horizon 92, Test MAE: 0.0195, Test MAPE: 0.1505, Test RMSE: 0.0342
+Evaluate best model on test data for horizon 93, Test MAE: 0.0196, Test MAPE: 0.1510, Test RMSE: 0.0343
+Evaluate best model on test data for horizon 94, Test MAE: 0.0196, Test MAPE: 0.1523, Test RMSE: 0.0341
+Evaluate best model on test data for horizon 95, Test MAE: 0.0195, Test MAPE: 0.1519, Test RMSE: 0.0340
+Evaluate best model on test data for horizon 96, Test MAE: 0.0195, Test MAPE: 0.1525, Test RMSE: 0.0340
+On average over 96 horizons, Test MAE: 0.0174, Test MAPE: 0.1337, Test RMSE: 0.0313
+
+Experiment completed!
+Total time: 588.6213 seconds (0.16 hours)
+Results: MAE=0.0174, MAPE=0.1337, RMSE=0.0313

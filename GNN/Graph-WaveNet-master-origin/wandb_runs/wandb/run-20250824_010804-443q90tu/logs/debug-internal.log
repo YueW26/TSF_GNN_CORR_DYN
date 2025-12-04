@@ -1,0 +1,18 @@
+{"time":"2025-08-24T01:08:04.453555628+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-24T01:08:04.453586108+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250824_010804-443q90tu/logs/debug-core.log"}
+{"time":"2025-08-24T01:08:04.454839018+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-24T01:08:04.461279701+02:00","level":"INFO","msg":"created new stream","id":"443q90tu"}
+{"time":"2025-08-24T01:08:04.461308411+02:00","level":"INFO","msg":"stream: started","id":"443q90tu"}
+{"time":"2025-08-24T01:08:04.46133412+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"443q90tu"}}
+{"time":"2025-08-24T01:08:04.46139963+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"443q90tu"}}
+{"time":"2025-08-24T01:08:04.46137385+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"443q90tu"}}
+{"time":"2025-08-24T01:08:04.829483409+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-24T01:08:04.834178785+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-24T01:09:02.335917308+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-24T01:09:02.340094877+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-24T01:09:03.351577086+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-24T01:09:04.564654556+02:00","level":"INFO","msg":"stream: closing","id":"443q90tu"}
+{"time":"2025-08-24T01:09:04.564686295+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"443q90tu"}}
+{"time":"2025-08-24T01:09:04.564728635+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"443q90tu"}}
+{"time":"2025-08-24T01:09:04.564745345+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"443q90tu"}}
+{"time":"2025-08-24T01:09:04.567191247+02:00","level":"INFO","msg":"stream: closed","id":"443q90tu"}

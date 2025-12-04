@@ -1,0 +1,18 @@
+{"time":"2025-08-24T01:57:02.100405425+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-24T01:57:02.100435174+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250824_015702-bhkqvas2/logs/debug-core.log"}
+{"time":"2025-08-24T01:57:02.101676505+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-24T01:57:02.111882086+02:00","level":"INFO","msg":"created new stream","id":"bhkqvas2"}
+{"time":"2025-08-24T01:57:02.111958675+02:00","level":"INFO","msg":"stream: started","id":"bhkqvas2"}
+{"time":"2025-08-24T01:57:02.112009575+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"bhkqvas2"}}
+{"time":"2025-08-24T01:57:02.112014605+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"bhkqvas2"}}
+{"time":"2025-08-24T01:57:02.112074184+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"bhkqvas2"}}
+{"time":"2025-08-24T01:57:02.608283556+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-24T01:57:02.613675324+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-24T02:02:07.86863255+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-24T02:02:07.87643104+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-24T02:02:10.491039719+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-24T02:02:11.74272326+02:00","level":"INFO","msg":"stream: closing","id":"bhkqvas2"}
+{"time":"2025-08-24T02:02:11.742756589+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"bhkqvas2"}}
+{"time":"2025-08-24T02:02:11.742781259+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"bhkqvas2"}}
+{"time":"2025-08-24T02:02:11.742791039+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"bhkqvas2"}}
+{"time":"2025-08-24T02:02:11.745004632+02:00","level":"INFO","msg":"stream: closed","id":"bhkqvas2"}

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "train.py", line 225, in <module>
+    main_experiment()
+  File "train.py", line 143, in main_experiment
+    seasonal, trend = _series_decomp_bcnt(trainx, kernel_size=args.series_kernel)
+  File "train.py", line 20, in _series_decomp_bcnt
+    x1 = x.view(B * C * N, 1, T)
+RuntimeError: view size is not compatible with input tensor's size and stride (at least one dimension spans across two contiguous subspaces). Use .reshape(...) instead.

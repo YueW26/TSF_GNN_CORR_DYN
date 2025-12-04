@@ -1,0 +1,18 @@
+{"time":"2025-08-24T00:50:44.290112424+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-24T00:50:44.290144254+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250824_005044-vrql26um/logs/debug-core.log"}
+{"time":"2025-08-24T00:50:44.291676113+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-24T00:50:44.301957297+02:00","level":"INFO","msg":"created new stream","id":"vrql26um"}
+{"time":"2025-08-24T00:50:44.301994467+02:00","level":"INFO","msg":"stream: started","id":"vrql26um"}
+{"time":"2025-08-24T00:50:44.302021026+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"vrql26um"}}
+{"time":"2025-08-24T00:50:44.302055336+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"vrql26um"}}
+{"time":"2025-08-24T00:50:44.302097486+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"vrql26um"}}
+{"time":"2025-08-24T00:50:44.646858083+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-24T00:50:44.651994345+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-24T00:52:30.991516682+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-24T00:52:30.999627032+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-24T00:52:31.69565387+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-24T00:52:32.928696696+02:00","level":"INFO","msg":"stream: closing","id":"vrql26um"}
+{"time":"2025-08-24T00:52:32.928732996+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"vrql26um"}}
+{"time":"2025-08-24T00:52:32.928785136+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"vrql26um"}}
+{"time":"2025-08-24T00:52:32.928798215+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"vrql26um"}}
+{"time":"2025-08-24T00:52:32.93095489+02:00","level":"INFO","msg":"stream: closed","id":"vrql26um"}

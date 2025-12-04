@@ -1,0 +1,60 @@
+检测到合成数据集：SYNTHETIC_EASY
+配置参数: 节点数=12, 邻接矩阵=data/sensor_graph/adj_mx_synthetic_easy.pkl
+运行单个实验...
+配置: seq_length=12, pred_length=12, enhance=none
+为 seq_length=12, pred_length=12 生成数据...
+不支持的数据集类型: DATA/SYNTHETIC_EASY
+跳过数据生成，使用现有数据...
+Namespace(addaptadj=True, adjdata='data/sensor_graph/adj_mx_synthetic_easy.pkl', adjtype='doubletransition', aptonly=False, batch_size=64, data='data/SYNTHETIC_EASY', device='cuda:0', dropout=0.3, enhance='none', epochs=10, expid=1, gcn_bool=True, graph_alpha=0.5, graph_mode='lowpass', in_dim=2, learning_rate=0.001, nhid=32, num_nodes=12, pred_length=12, print_every=50, randomadj=True, run_multiple_experiments=False, save='./garage/synth_easy/', seq_length=12, series_kernel=25, weight_decay=0.0001)
+start training...
+Iter: 000, Train Loss: 0.4450, Train MAPE: -0.0049, Train RMSE: 0.5444
+Epoch: 001, Inference Time: 0.0883 secs
+Epoch: 001, Train Loss: 0.3639, Train MAPE: 0.0647, Train RMSE: 0.5042, Valid Loss: 0.4017, Valid MAPE: -0.0021, Valid RMSE: 0.5186, Training Time: 3.1500/epoch
+Iter: 000, Train Loss: 0.3370, Train MAPE: 0.0914, Train RMSE: 0.4988
+Epoch: 002, Inference Time: 0.0882 secs
+Epoch: 002, Train Loss: 0.3306, Train MAPE: 0.1028, Train RMSE: 0.4931, Valid Loss: 0.3854, Valid MAPE: 0.0286, Valid RMSE: 0.5191, Training Time: 0.8325/epoch
+Iter: 000, Train Loss: 0.3272, Train MAPE: 0.0932, Train RMSE: 0.4965
+Epoch: 003, Inference Time: 0.0884 secs
+Epoch: 003, Train Loss: 0.3233, Train MAPE: 0.0748, Train RMSE: 0.4892, Valid Loss: 0.3731, Valid MAPE: 0.0636, Valid RMSE: 0.5266, Training Time: 0.8354/epoch
+Iter: 000, Train Loss: 0.3247, Train MAPE: 0.1078, Train RMSE: 0.4957
+Epoch: 004, Inference Time: 0.0883 secs
+Epoch: 004, Train Loss: 0.3188, Train MAPE: 0.0841, Train RMSE: 0.4858, Valid Loss: 0.3696, Valid MAPE: 0.0876, Valid RMSE: 0.5423, Training Time: 0.8378/epoch
+Iter: 000, Train Loss: 0.3132, Train MAPE: 0.1177, Train RMSE: 0.4895
+Epoch: 005, Inference Time: 0.0882 secs
+Epoch: 005, Train Loss: 0.3150, Train MAPE: 0.0665, Train RMSE: 0.4815, Valid Loss: 0.3688, Valid MAPE: 0.0993, Valid RMSE: 0.5399, Training Time: 0.8334/epoch
+Iter: 000, Train Loss: 0.3191, Train MAPE: 0.1247, Train RMSE: 0.4767
+Epoch: 006, Inference Time: 0.0883 secs
+Epoch: 006, Train Loss: 0.3121, Train MAPE: 0.0745, Train RMSE: 0.4798, Valid Loss: 0.3681, Valid MAPE: 0.0898, Valid RMSE: 0.5407, Training Time: 0.8315/epoch
+Iter: 000, Train Loss: 0.3024, Train MAPE: 0.0505, Train RMSE: 0.4588
+Epoch: 007, Inference Time: 0.0883 secs
+Epoch: 007, Train Loss: 0.3081, Train MAPE: 0.0598, Train RMSE: 0.4739, Valid Loss: 0.3710, Valid MAPE: 0.1039, Valid RMSE: 0.5503, Training Time: 0.8337/epoch
+Iter: 000, Train Loss: 0.3002, Train MAPE: 0.0399, Train RMSE: 0.4745
+Epoch: 008, Inference Time: 0.0883 secs
+Epoch: 008, Train Loss: 0.3048, Train MAPE: 0.0613, Train RMSE: 0.4713, Valid Loss: 0.3695, Valid MAPE: 0.0928, Valid RMSE: 0.5425, Training Time: 0.8322/epoch
+Iter: 000, Train Loss: 0.3076, Train MAPE: 0.0814, Train RMSE: 0.4757
+Epoch: 009, Inference Time: 0.0883 secs
+Epoch: 009, Train Loss: 0.3005, Train MAPE: 0.0523, Train RMSE: 0.4659, Valid Loss: 0.3749, Valid MAPE: 0.1232, Valid RMSE: 0.5558, Training Time: 0.8328/epoch
+Iter: 000, Train Loss: 0.3036, Train MAPE: 0.0716, Train RMSE: 0.4710
+Epoch: 010, Inference Time: 0.0883 secs
+Epoch: 010, Train Loss: 0.2977, Train MAPE: 0.0556, Train RMSE: 0.4611, Valid Loss: 0.3700, Valid MAPE: 0.0961, Valid RMSE: 0.5454, Training Time: 0.8322/epoch
+Average Training Time: 1.0651 secs/epoch
+Average Inference Time: 0.0883 secs
+Training finished
+The valid loss on best model is 0.3681
+Evaluate best model on test data for horizon 1, Test MAE: 0.2023, Test MAPE: 0.0297, Test RMSE: 0.3929
+Evaluate best model on test data for horizon 2, Test MAE: 0.2562, Test MAPE: 0.0395, Test RMSE: 0.4426
+Evaluate best model on test data for horizon 3, Test MAE: 0.3021, Test MAPE: 0.0032, Test RMSE: 0.4724
+Evaluate best model on test data for horizon 4, Test MAE: 0.3281, Test MAPE: 0.0127, Test RMSE: 0.4884
+Evaluate best model on test data for horizon 5, Test MAE: 0.3584, Test MAPE: 0.0084, Test RMSE: 0.5026
+Evaluate best model on test data for horizon 6, Test MAE: 0.3776, Test MAPE: 0.0065, Test RMSE: 0.5191
+Evaluate best model on test data for horizon 7, Test MAE: 0.3974, Test MAPE: 0.0148, Test RMSE: 0.5306
+Evaluate best model on test data for horizon 8, Test MAE: 0.4061, Test MAPE: -0.0008, Test RMSE: 0.5379
+Evaluate best model on test data for horizon 9, Test MAE: 0.4144, Test MAPE: -0.0323, Test RMSE: 0.5384
+Evaluate best model on test data for horizon 10, Test MAE: 0.4240, Test MAPE: -0.0132, Test RMSE: 0.5491
+Evaluate best model on test data for horizon 11, Test MAE: 0.4338, Test MAPE: -0.0527, Test RMSE: 0.5522
+Evaluate best model on test data for horizon 12, Test MAE: 0.4357, Test MAPE: -0.0602, Test RMSE: 0.5511
+On average over 12 horizons, Test MAE: 0.3613, Test MAPE: -0.0037, Test RMSE: 0.5064
+
+Experiment completed!
+Total time: 14.1909 seconds (0.00 hours)
+Results: MAE=0.3613, MAPE=-0.0037, RMSE=0.5064

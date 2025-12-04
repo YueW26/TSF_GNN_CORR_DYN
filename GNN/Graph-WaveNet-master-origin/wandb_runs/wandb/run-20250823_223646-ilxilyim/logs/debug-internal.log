@@ -1,0 +1,18 @@
+{"time":"2025-08-23T22:36:46.879412493+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-23T22:36:46.879447443+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250823_223646-ilxilyim/logs/debug-core.log"}
+{"time":"2025-08-23T22:36:46.881004311+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-23T22:36:46.889743635+02:00","level":"INFO","msg":"created new stream","id":"ilxilyim"}
+{"time":"2025-08-23T22:36:46.889847984+02:00","level":"INFO","msg":"stream: started","id":"ilxilyim"}
+{"time":"2025-08-23T22:36:46.889852534+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"ilxilyim"}}
+{"time":"2025-08-23T22:36:46.889987583+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"ilxilyim"}}
+{"time":"2025-08-23T22:36:46.889905493+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"ilxilyim"}}
+{"time":"2025-08-23T22:36:47.247460111+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-23T22:36:47.252160446+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-23T22:38:34.042597738+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-23T22:38:34.052103145+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-23T22:38:34.753751583+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-23T22:38:35.989301528+02:00","level":"INFO","msg":"stream: closing","id":"ilxilyim"}
+{"time":"2025-08-23T22:38:35.989340008+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"ilxilyim"}}
+{"time":"2025-08-23T22:38:35.989389117+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"ilxilyim"}}
+{"time":"2025-08-23T22:38:35.989395007+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"ilxilyim"}}
+{"time":"2025-08-23T22:38:35.992728732+02:00","level":"INFO","msg":"stream: closed","id":"ilxilyim"}

@@ -1,0 +1,225 @@
+检测到原始France数据集
+配置参数: 节点数=10, 邻接矩阵=data/sensor_graph/adj_mx_france.pkl
+运行单个实验...
+配置: seq_length=96, pred_length=96, enhance=none
+为 seq_length=96, pred_length=96 生成数据...
+FRANCE数据已存在且序列长度匹配 (seq_length=96)
+Namespace(addaptadj=True, adjdata='data/sensor_graph/adj_mx_france.pkl', adjtype='doubletransition', aptonly=False, batch_size=64, data='data/FRANCE', device='cuda:0', dropout=0.5, enhance='none', epochs=5, expid=1, gcn_bool=True, graph_alpha=0.5, graph_mode='lowpass', in_dim=2, learning_rate=0.001, nhid=32, num_nodes=10, pred_length=96, print_every=50, randomadj=True, run_multiple_experiments=False, save='./garage/france/', seq_length=96, series_kernel=25, weight_decay=0.0001)
+start training...
+Iter: 000, Train Loss: 0.0367, Train MAPE: 0.2609, Train RMSE: 0.0502
+Iter: 050, Train Loss: 0.0186, Train MAPE: 0.1250, Train RMSE: 0.0293
+Iter: 100, Train Loss: 0.0174, Train MAPE: 0.1078, Train RMSE: 0.0297
+Iter: 150, Train Loss: 0.0175, Train MAPE: 0.1105, Train RMSE: 0.0286
+Iter: 200, Train Loss: 0.0192, Train MAPE: 0.1165, Train RMSE: 0.0343
+Iter: 250, Train Loss: 0.0177, Train MAPE: 0.1113, Train RMSE: 0.0313
+Iter: 300, Train Loss: 0.0178, Train MAPE: 0.1213, Train RMSE: 0.0269
+Iter: 350, Train Loss: 0.0180, Train MAPE: 0.1132, Train RMSE: 0.0299
+Iter: 400, Train Loss: 0.0158, Train MAPE: 0.1034, Train RMSE: 0.0251
+Iter: 450, Train Loss: 0.0166, Train MAPE: 0.1107, Train RMSE: 0.0260
+Iter: 500, Train Loss: 0.0171, Train MAPE: 0.1091, Train RMSE: 0.0287
+Iter: 550, Train Loss: 0.0179, Train MAPE: 0.1145, Train RMSE: 0.0311
+Iter: 600, Train Loss: 0.0172, Train MAPE: 0.1128, Train RMSE: 0.0298
+Iter: 650, Train Loss: 0.0166, Train MAPE: 0.1030, Train RMSE: 0.0298
+Iter: 700, Train Loss: 0.0182, Train MAPE: 0.1121, Train RMSE: 0.0312
+Iter: 750, Train Loss: 0.0179, Train MAPE: 0.1089, Train RMSE: 0.0292
+Iter: 800, Train Loss: 0.0175, Train MAPE: 0.1156, Train RMSE: 0.0281
+Iter: 850, Train Loss: 0.0167, Train MAPE: 0.1050, Train RMSE: 0.0276
+Iter: 900, Train Loss: 0.0172, Train MAPE: 0.1123, Train RMSE: 0.0271
+Epoch: 001, Inference Time: 2.6691 secs
+Epoch: 001, Train Loss: 0.0174, Train MAPE: 0.1110, Train RMSE: 0.0286, Valid Loss: 0.0196, Valid MAPE: 0.1302, Valid RMSE: 0.0313, Training Time: 58.9922/epoch
+Iter: 000, Train Loss: 0.0171, Train MAPE: 0.1096, Train RMSE: 0.0274
+Iter: 050, Train Loss: 0.0168, Train MAPE: 0.1106, Train RMSE: 0.0272
+Iter: 100, Train Loss: 0.0165, Train MAPE: 0.1061, Train RMSE: 0.0265
+Iter: 150, Train Loss: 0.0182, Train MAPE: 0.1159, Train RMSE: 0.0308
+Iter: 200, Train Loss: 0.0161, Train MAPE: 0.1038, Train RMSE: 0.0259
+Iter: 250, Train Loss: 0.0176, Train MAPE: 0.1161, Train RMSE: 0.0285
+Iter: 300, Train Loss: 0.0176, Train MAPE: 0.1208, Train RMSE: 0.0266
+Iter: 350, Train Loss: 0.0167, Train MAPE: 0.1061, Train RMSE: 0.0273
+Iter: 400, Train Loss: 0.0162, Train MAPE: 0.1047, Train RMSE: 0.0257
+Iter: 450, Train Loss: 0.0184, Train MAPE: 0.1139, Train RMSE: 0.0304
+Iter: 500, Train Loss: 0.0162, Train MAPE: 0.1027, Train RMSE: 0.0256
+Iter: 550, Train Loss: 0.0176, Train MAPE: 0.1088, Train RMSE: 0.0302
+Iter: 600, Train Loss: 0.0170, Train MAPE: 0.1006, Train RMSE: 0.0283
+Iter: 650, Train Loss: 0.0172, Train MAPE: 0.1072, Train RMSE: 0.0279
+Iter: 700, Train Loss: 0.0177, Train MAPE: 0.1215, Train RMSE: 0.0285
+Iter: 750, Train Loss: 0.0162, Train MAPE: 0.1037, Train RMSE: 0.0256
+Iter: 800, Train Loss: 0.0171, Train MAPE: 0.1140, Train RMSE: 0.0270
+Iter: 850, Train Loss: 0.0172, Train MAPE: 0.1100, Train RMSE: 0.0280
+Iter: 900, Train Loss: 0.0170, Train MAPE: 0.1083, Train RMSE: 0.0283
+Epoch: 002, Inference Time: 2.6400 secs
+Epoch: 002, Train Loss: 0.0171, Train MAPE: 0.1090, Train RMSE: 0.0283, Valid Loss: 0.0194, Valid MAPE: 0.1241, Valid RMSE: 0.0317, Training Time: 56.4519/epoch
+Iter: 000, Train Loss: 0.0166, Train MAPE: 0.1037, Train RMSE: 0.0267
+Iter: 050, Train Loss: 0.0172, Train MAPE: 0.1063, Train RMSE: 0.0284
+Iter: 100, Train Loss: 0.0174, Train MAPE: 0.1116, Train RMSE: 0.0282
+Iter: 150, Train Loss: 0.0180, Train MAPE: 0.1118, Train RMSE: 0.0318
+Iter: 200, Train Loss: 0.0171, Train MAPE: 0.1075, Train RMSE: 0.0283
+Iter: 250, Train Loss: 0.0177, Train MAPE: 0.1076, Train RMSE: 0.0309
+Iter: 300, Train Loss: 0.0164, Train MAPE: 0.1019, Train RMSE: 0.0263
+Iter: 350, Train Loss: 0.0165, Train MAPE: 0.1081, Train RMSE: 0.0275
+Iter: 400, Train Loss: 0.0172, Train MAPE: 0.1083, Train RMSE: 0.0276
+Iter: 450, Train Loss: 0.0185, Train MAPE: 0.1127, Train RMSE: 0.0333
+Iter: 500, Train Loss: 0.0160, Train MAPE: 0.1052, Train RMSE: 0.0249
+Iter: 550, Train Loss: 0.0162, Train MAPE: 0.1059, Train RMSE: 0.0256
+Iter: 600, Train Loss: 0.0172, Train MAPE: 0.1072, Train RMSE: 0.0286
+Iter: 650, Train Loss: 0.0172, Train MAPE: 0.1109, Train RMSE: 0.0288
+Iter: 700, Train Loss: 0.0172, Train MAPE: 0.1209, Train RMSE: 0.0269
+Iter: 750, Train Loss: 0.0175, Train MAPE: 0.1099, Train RMSE: 0.0302
+Iter: 800, Train Loss: 0.0174, Train MAPE: 0.1082, Train RMSE: 0.0283
+Iter: 850, Train Loss: 0.0167, Train MAPE: 0.1143, Train RMSE: 0.0259
+Iter: 900, Train Loss: 0.0177, Train MAPE: 0.1129, Train RMSE: 0.0279
+Epoch: 003, Inference Time: 2.6421 secs
+Epoch: 003, Train Loss: 0.0172, Train MAPE: 0.1093, Train RMSE: 0.0283, Valid Loss: 0.0194, Valid MAPE: 0.1228, Valid RMSE: 0.0316, Training Time: 56.3466/epoch
+Iter: 000, Train Loss: 0.0170, Train MAPE: 0.1067, Train RMSE: 0.0292
+Iter: 050, Train Loss: 0.0170, Train MAPE: 0.1087, Train RMSE: 0.0276
+Iter: 100, Train Loss: 0.0167, Train MAPE: 0.1052, Train RMSE: 0.0274
+Iter: 150, Train Loss: 0.0200, Train MAPE: 0.1128, Train RMSE: 0.0380
+Iter: 200, Train Loss: 0.0173, Train MAPE: 0.1108, Train RMSE: 0.0281
+Iter: 250, Train Loss: 0.0172, Train MAPE: 0.1110, Train RMSE: 0.0278
+Iter: 300, Train Loss: 0.0170, Train MAPE: 0.1113, Train RMSE: 0.0269
+Iter: 350, Train Loss: 0.0163, Train MAPE: 0.1052, Train RMSE: 0.0264
+Iter: 400, Train Loss: 0.0169, Train MAPE: 0.1086, Train RMSE: 0.0274
+Iter: 450, Train Loss: 0.0169, Train MAPE: 0.1049, Train RMSE: 0.0297
+Iter: 500, Train Loss: 0.0172, Train MAPE: 0.1075, Train RMSE: 0.0283
+Iter: 550, Train Loss: 0.0174, Train MAPE: 0.1100, Train RMSE: 0.0283
+Iter: 600, Train Loss: 0.0189, Train MAPE: 0.1168, Train RMSE: 0.0297
+Iter: 650, Train Loss: 0.0171, Train MAPE: 0.1102, Train RMSE: 0.0269
+Iter: 700, Train Loss: 0.0161, Train MAPE: 0.1003, Train RMSE: 0.0264
+Iter: 750, Train Loss: 0.0176, Train MAPE: 0.1122, Train RMSE: 0.0291
+Iter: 800, Train Loss: 0.0195, Train MAPE: 0.1193, Train RMSE: 0.0336
+Iter: 850, Train Loss: 0.0170, Train MAPE: 0.1072, Train RMSE: 0.0279
+Iter: 900, Train Loss: 0.0179, Train MAPE: 0.1167, Train RMSE: 0.0296
+Epoch: 004, Inference Time: 2.6451 secs
+Epoch: 004, Train Loss: 0.0171, Train MAPE: 0.1090, Train RMSE: 0.0282, Valid Loss: 0.0196, Valid MAPE: 0.1264, Valid RMSE: 0.0315, Training Time: 56.3096/epoch
+Iter: 000, Train Loss: 0.0173, Train MAPE: 0.1086, Train RMSE: 0.0274
+Iter: 050, Train Loss: 0.0179, Train MAPE: 0.1123, Train RMSE: 0.0288
+Iter: 100, Train Loss: 0.0175, Train MAPE: 0.1149, Train RMSE: 0.0270
+Iter: 150, Train Loss: 0.0167, Train MAPE: 0.1066, Train RMSE: 0.0262
+Iter: 200, Train Loss: 0.0179, Train MAPE: 0.1106, Train RMSE: 0.0317
+Iter: 250, Train Loss: 0.0188, Train MAPE: 0.1181, Train RMSE: 0.0332
+Iter: 300, Train Loss: 0.0175, Train MAPE: 0.1119, Train RMSE: 0.0286
+Iter: 350, Train Loss: 0.0197, Train MAPE: 0.1229, Train RMSE: 0.0319
+Iter: 400, Train Loss: 0.0167, Train MAPE: 0.1075, Train RMSE: 0.0268
+Iter: 450, Train Loss: 0.0193, Train MAPE: 0.1143, Train RMSE: 0.0330
+Iter: 500, Train Loss: 0.0163, Train MAPE: 0.1045, Train RMSE: 0.0266
+Iter: 550, Train Loss: 0.0165, Train MAPE: 0.1077, Train RMSE: 0.0262
+Iter: 600, Train Loss: 0.0165, Train MAPE: 0.1037, Train RMSE: 0.0256
+Iter: 650, Train Loss: 0.0162, Train MAPE: 0.1050, Train RMSE: 0.0254
+Iter: 700, Train Loss: 0.0165, Train MAPE: 0.1058, Train RMSE: 0.0267
+Iter: 750, Train Loss: 0.0189, Train MAPE: 0.1173, Train RMSE: 0.0332
+Iter: 800, Train Loss: 0.0161, Train MAPE: 0.1071, Train RMSE: 0.0258
+Iter: 850, Train Loss: 0.0161, Train MAPE: 0.1040, Train RMSE: 0.0263
+Iter: 900, Train Loss: 0.0162, Train MAPE: 0.1046, Train RMSE: 0.0253
+Epoch: 005, Inference Time: 2.6320 secs
+Epoch: 005, Train Loss: 0.0171, Train MAPE: 0.1091, Train RMSE: 0.0282, Valid Loss: 0.0195, Valid MAPE: 0.1244, Valid RMSE: 0.0316, Training Time: 56.3560/epoch
+Average Training Time: 56.8913 secs/epoch
+Average Inference Time: 2.6457 secs
+Traceback (most recent call last):
+  File "train.py", line 492, in <module>
+    result = main_experiment()
+  File "train.py", line 344, in main_experiment
+    engine.model.load_state_dict(torch.load(args.save+"_epoch_"+str(bestid+1)+"_"+str(round(his_loss[bestid],2))+".pth"))
+  File "/mnt/webscistorage/cc7738/anaconda3/envs/Energy-TSF/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1604, in load_state_dict
+    raise RuntimeError('Error(s) in loading state_dict for {}:\n\t{}'.format(
+RuntimeError: Error(s) in loading state_dict for gwnet:
+	Missing key(s) in state_dict: "gconv.0.power_coef", "gconv.0.mlp.mlp.weight", "gconv.0.mlp.mlp.bias", "gconv.1.power_coef", "gconv.1.mlp.mlp.weight", "gconv.1.mlp.mlp.bias", "gconv.2.power_coef", "gconv.2.mlp.mlp.weight", "gconv.2.mlp.mlp.bias", "gconv.3.power_coef", "gconv.3.mlp.mlp.weight", "gconv.3.mlp.mlp.bias", "gconv.4.power_coef", "gconv.4.mlp.mlp.weight", "gconv.4.mlp.mlp.bias", "gconv.5.power_coef", "gconv.5.mlp.mlp.weight", "gconv.5.mlp.mlp.bias", "gconv.6.power_coef", "gconv.6.mlp.mlp.weight", "gconv.6.mlp.mlp.bias", "gconv.7.power_coef", "gconv.7.mlp.mlp.weight", "gconv.7.mlp.mlp.bias".
+	size mismatch for filter_convs.0.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for filter_convs.0.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for filter_convs.1.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for filter_convs.1.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for filter_convs.2.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for filter_convs.2.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for filter_convs.3.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for filter_convs.3.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for filter_convs.4.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for filter_convs.4.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for filter_convs.5.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for filter_convs.5.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for filter_convs.6.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for filter_convs.6.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for filter_convs.7.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for filter_convs.7.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for gate_convs.0.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for gate_convs.0.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for gate_convs.1.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for gate_convs.1.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for gate_convs.2.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for gate_convs.2.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for gate_convs.3.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for gate_convs.3.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for gate_convs.4.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for gate_convs.4.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for gate_convs.5.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for gate_convs.5.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for gate_convs.6.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for gate_convs.6.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for gate_convs.7.weight: copying a param with shape torch.Size([64, 64, 1, 2]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 2]).
+	size mismatch for gate_convs.7.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for residual_convs.0.weight: copying a param with shape torch.Size([64, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 1]).
+	size mismatch for residual_convs.0.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for residual_convs.1.weight: copying a param with shape torch.Size([64, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 1]).
+	size mismatch for residual_convs.1.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for residual_convs.2.weight: copying a param with shape torch.Size([64, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 1]).
+	size mismatch for residual_convs.2.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for residual_convs.3.weight: copying a param with shape torch.Size([64, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 1]).
+	size mismatch for residual_convs.3.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for residual_convs.4.weight: copying a param with shape torch.Size([64, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 1]).
+	size mismatch for residual_convs.4.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for residual_convs.5.weight: copying a param with shape torch.Size([64, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 1]).
+	size mismatch for residual_convs.5.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for residual_convs.6.weight: copying a param with shape torch.Size([64, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 1]).
+	size mismatch for residual_convs.6.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for residual_convs.7.weight: copying a param with shape torch.Size([64, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([32, 32, 1, 1]).
+	size mismatch for residual_convs.7.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for skip_convs.0.weight: copying a param with shape torch.Size([512, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([256, 32, 1, 1]).
+	size mismatch for skip_convs.0.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for skip_convs.1.weight: copying a param with shape torch.Size([512, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([256, 32, 1, 1]).
+	size mismatch for skip_convs.1.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for skip_convs.2.weight: copying a param with shape torch.Size([512, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([256, 32, 1, 1]).
+	size mismatch for skip_convs.2.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for skip_convs.3.weight: copying a param with shape torch.Size([512, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([256, 32, 1, 1]).
+	size mismatch for skip_convs.3.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for skip_convs.4.weight: copying a param with shape torch.Size([512, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([256, 32, 1, 1]).
+	size mismatch for skip_convs.4.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for skip_convs.5.weight: copying a param with shape torch.Size([512, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([256, 32, 1, 1]).
+	size mismatch for skip_convs.5.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for skip_convs.6.weight: copying a param with shape torch.Size([512, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([256, 32, 1, 1]).
+	size mismatch for skip_convs.6.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for skip_convs.7.weight: copying a param with shape torch.Size([512, 64, 1, 1]) from checkpoint, the shape in current model is torch.Size([256, 32, 1, 1]).
+	size mismatch for skip_convs.7.bias: copying a param with shape torch.Size([512]) from checkpoint, the shape in current model is torch.Size([256]).
+	size mismatch for bn.0.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.0.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.0.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.0.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.1.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.1.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.1.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.1.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.2.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.2.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.2.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.2.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.3.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.3.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.3.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.3.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.4.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.4.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.4.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.4.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.5.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.5.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.5.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.5.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.6.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.6.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.6.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.6.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.7.weight: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.7.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.7.running_mean: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for bn.7.running_var: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for start_conv.weight: copying a param with shape torch.Size([64, 2, 1, 1]) from checkpoint, the shape in current model is torch.Size([32, 2, 1, 1]).
+	size mismatch for start_conv.bias: copying a param with shape torch.Size([64]) from checkpoint, the shape in current model is torch.Size([32]).
+	size mismatch for end_conv_1.weight: copying a param with shape torch.Size([1024, 512, 1, 1]) from checkpoint, the shape in current model is torch.Size([512, 256, 1, 1]).
+	size mismatch for end_conv_1.bias: copying a param with shape torch.Size([1024]) from checkpoint, the shape in current model is torch.Size([512]).
+	size mismatch for end_conv_2.weight: copying a param with shape torch.Size([96, 1024, 1, 1]) from checkpoint, the shape in current model is torch.Size([96, 512, 1, 1]).

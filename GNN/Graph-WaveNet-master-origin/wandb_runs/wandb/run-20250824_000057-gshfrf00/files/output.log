@@ -1,0 +1,16 @@
+✅ 检测到原始France数据集
+📊 配置参数: 节点数=10, 邻接矩阵=data/sensor_graph/adj_mx_france.pkl
+🏋️ 运行单个实验...
+📊 配置: seq_length=12, pred_length=12
+🔄 为 seq_length=12, pred_length=12 生成数据...
+✅ FRANCE数据已存在且序列长度匹配 (seq_length=12)
+Traceback (most recent call last):
+  File "train.py", line 1070, in <module>
+    result = main_experiment()
+  File "train.py", line 818, in main_experiment
+    supports = [torch.tensor(i).to(device) for i in adj_mx]
+  File "train.py", line 818, in <listcomp>
+    supports = [torch.tensor(i).to(device) for i in adj_mx]
+  File "/mnt/webscistorage/cc7738/anaconda3/envs/Energy-TSF/lib/python3.8/site-packages/torch/cuda/__init__.py", line 217, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: CUDA driver initialization failed, you might not have a CUDA gpu.

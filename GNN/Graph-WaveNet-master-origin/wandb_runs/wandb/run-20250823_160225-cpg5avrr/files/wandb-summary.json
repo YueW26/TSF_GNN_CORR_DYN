@@ -1,0 +1,1 @@
+{"valid/loss":0.0195,"valid/rmse":0.0316,"train/mape":0.1046,"_runtime":309.945492303,"train/loss":0.0162,"valid/mape":0.1244,"_wandb":{"runtime":309},"_step":113,"epoch":5,"_timestamp":1.7559580543414662e+09,"train/rmse":0.0253}

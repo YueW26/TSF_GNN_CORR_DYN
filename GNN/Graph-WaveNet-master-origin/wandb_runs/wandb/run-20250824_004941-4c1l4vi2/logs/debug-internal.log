@@ -1,0 +1,18 @@
+{"time":"2025-08-24T00:49:41.234314617+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-24T00:49:41.234331497+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250824_004941-4c1l4vi2/logs/debug-core.log"}
+{"time":"2025-08-24T00:49:41.235658687+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-24T00:49:41.243470989+02:00","level":"INFO","msg":"created new stream","id":"4c1l4vi2"}
+{"time":"2025-08-24T00:49:41.243523599+02:00","level":"INFO","msg":"stream: started","id":"4c1l4vi2"}
+{"time":"2025-08-24T00:49:41.243548388+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"4c1l4vi2"}}
+{"time":"2025-08-24T00:49:41.243563628+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"4c1l4vi2"}}
+{"time":"2025-08-24T00:49:41.243560228+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"4c1l4vi2"}}
+{"time":"2025-08-24T00:49:41.573861943+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-24T00:49:41.579137324+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-24T00:50:38.743842297+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-24T00:50:38.749481426+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-24T00:50:39.537803816+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-24T00:50:40.940014641+02:00","level":"INFO","msg":"stream: closing","id":"4c1l4vi2"}
+{"time":"2025-08-24T00:50:40.94004855+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"4c1l4vi2"}}
+{"time":"2025-08-24T00:50:40.94007118+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"4c1l4vi2"}}
+{"time":"2025-08-24T00:50:40.94010798+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"4c1l4vi2"}}
+{"time":"2025-08-24T00:50:40.943630024+02:00","level":"INFO","msg":"stream: closed","id":"4c1l4vi2"}

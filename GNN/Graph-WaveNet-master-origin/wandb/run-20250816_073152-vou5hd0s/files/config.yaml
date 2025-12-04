@@ -1,0 +1,68 @@
+_wandb:
+    value:
+        cli_version: 0.18.2
+        m: []
+        python_version: 3.8.20
+        t:
+            "1":
+                - 1
+                - 55
+            "3":
+                - 16
+                - 23
+                - 55
+            "4": 3.8.20
+            "5": 0.18.2
+            "8":
+                - 2
+                - 5
+            "12": 0.18.2
+            "13": linux-x86_64
+addaptadj:
+    value: true
+adjdata:
+    value: data/sensor_graph/adj_mx.pkl
+adjtype:
+    value: doubletransition
+aptonly:
+    value: false
+batch_size:
+    value: 64
+data:
+    value: data/FRANCE
+device:
+    value: cuda:0
+dropout:
+    value: 0.3
+epochs:
+    value: 10
+expid:
+    value: 1
+gcn_bool:
+    value: true
+in_dim:
+    value: 2
+learning_rate:
+    value: 0.001
+nhid:
+    value: 32
+num_nodes:
+    value: 207
+pred_length:
+    value: 96
+print_every:
+    value: 50
+randomadj:
+    value: true
+save:
+    value: ./garage/metr
+seq_length:
+    value: 96
+wandb:
+    value: true
+wandb_entity:
+    value: myusername
+wandb_project:
+    value: MyProject
+weight_decay:
+    value: 0.0001

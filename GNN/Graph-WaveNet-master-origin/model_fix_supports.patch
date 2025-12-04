@@ -1,0 +1,54 @@
+--- /mnt/webscistorage/cc7738/ws_joella/EnergyTSF/GNN/Graph-WaveNet-master-origin/model.py
++++ /mnt/webscistorage/cc7738/ws_joella/EnergyTSF/GNN/Graph-WaveNet-master-origin/model.py
+@@ -311,6 +311,17 @@
+         # calculate the current adaptive adj matrix once per iteration
+         new_supports = None
+         if self.gcn_bool and self.addaptadj and self.supports is not None:
+             adp = F.softmax(F.relu(torch.mm(self.nodevec1, self.nodevec2)), dim=1)
+             new_supports = self.supports + [adp]
++
++        # ---- FIX: make sure gcn receives the SAME number of supports as in __init__ ----
++        # If adaptive adj is enabled, gcn was constructed with support_len = len(self.supports) + 1
++        # Otherwise, it was constructed with support_len = len(self.supports).
++        # Passing only [A] will break channel expectations (e.g., 224 vs 96).
++        if self.gcn_bool:
++            if self.addaptadj and self.supports is not None:
++                supports_to_use = new_supports
++            else:
++                supports_to_use = self.supports
++        # ------------------------------------------------------------------------------
+ 
+         # WaveNet layers
+         for i in range(self.blocks * self.layers):
+@@ -358,12 +369,12 @@
+             try:
+                 skip = skip[:, :, :,  -s.size(3):]
+             except:
+                 skip = 0
+             skip = s + skip
+-
+-
+-            if self.gcn_bool and self.supports is not None:
+-                if self.addaptadj:
+-                    x = self.gconv[i](x, new_supports)
+-                else:
+-                    x = self.gconv[i](x,self.supports)
++            
++            # ---- FIX: always pass the consistent supports list to gcn ----
++            if self.gcn_bool and self.supports is not None:
++                # use the unified 'supports_to_use' to match 'support_len' at construction time
++                x = self.gconv[i](x, supports_to_use)
++            # ----------------------------------------------------------------
+             else:
+                 x = self.residual_convs[i](x)
+ 
+             x = x + residual[:, :, :, -x.size(3):]
+ 
+@@ -472,7 +483,13 @@
+         x = F.relu(skip)
+         x = F.relu(self.end_conv_1(x))
+         x = self.end_conv_2(x)
+ 
+         # x = torch.sigmoid(x)
+-        return x
++        return x

@@ -1,0 +1,18 @@
+{"time":"2025-08-23T18:26:56.106131207+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-23T18:26:56.106162887+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250823_182656-s971pndk/logs/debug-core.log"}
+{"time":"2025-08-23T18:26:56.107655936+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-23T18:26:56.115867334+02:00","level":"INFO","msg":"created new stream","id":"s971pndk"}
+{"time":"2025-08-23T18:26:56.115984873+02:00","level":"INFO","msg":"stream: started","id":"s971pndk"}
+{"time":"2025-08-23T18:26:56.115974573+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"s971pndk"}}
+{"time":"2025-08-23T18:26:56.116034102+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"s971pndk"}}
+{"time":"2025-08-23T18:26:56.116143911+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"s971pndk"}}
+{"time":"2025-08-23T18:26:56.470590532+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-23T18:26:56.475626254+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-23T18:37:07.230739285+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-23T18:37:07.239018352+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-23T18:37:08.337619767+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-23T18:37:09.58462385+02:00","level":"INFO","msg":"stream: closing","id":"s971pndk"}
+{"time":"2025-08-23T18:37:09.58465771+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"s971pndk"}}
+{"time":"2025-08-23T18:37:09.58468046+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"s971pndk"}}
+{"time":"2025-08-23T18:37:09.58471084+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"s971pndk"}}
+{"time":"2025-08-23T18:37:09.592260502+02:00","level":"INFO","msg":"stream: closed","id":"s971pndk"}

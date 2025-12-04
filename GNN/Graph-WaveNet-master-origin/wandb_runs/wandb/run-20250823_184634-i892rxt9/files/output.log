@@ -1,0 +1,19 @@
+检测到合成数据集：SYNTHETIC_EASY
+配置参数: 节点数=12, 邻接矩阵=data/sensor_graph/adj_mx_synthetic_easy.pkl
+运行单个实验...
+配置: seq_length=96, pred_length=96, enhance=none
+为 seq_length=96, pred_length=96 生成数据...
+不支持的数据集类型: DATA/SYNTHETIC_EASY
+跳过数据生成，使用现有数据...
+Namespace(addaptadj=True, adjdata='data/sensor_graph/adj_mx_synthetic_easy.pkl', adjtype='doubletransition', aptonly=False, batch_size=64, data='data/SYNTHETIC_EASY', device='cuda:0', dropout=0.3, enhance='none', epochs=10, expid=1, gcn_bool=True, graph_alpha=0.5, graph_mode='lowpass', in_dim=2, learning_rate=0.001, nhid=32, num_nodes=12, pred_length=96, print_every=50, randomadj=True, run_multiple_experiments=False, save='./garage/synth_easy/', seq_length=96, series_kernel=25, weight_decay=0.0001)
+start training...
+Traceback (most recent call last):
+  File "train.py", line 530, in <module>
+    result = main_experiment()
+  File "train.py", line 325, in main_experiment
+    metrics = engine.train(trainx, trainy[:,0,:,:])  # 目标仍用原第一特征
+  File "/mnt/webscistorage/cc7738/ws_joella/EnergyTSF/GNN/Graph-WaveNet-master-origin/engine.py", line 24, in train
+    loss = self.loss(predict, real, 0.0)
+  File "/mnt/webscistorage/cc7738/ws_joella/EnergyTSF/GNN/Graph-WaveNet-master-origin/util.py", line 185, in masked_mae
+    loss = torch.abs(preds-labels)
+RuntimeError: The size of tensor a (96) must match the size of tensor b (12) at non-singleton dimension 3

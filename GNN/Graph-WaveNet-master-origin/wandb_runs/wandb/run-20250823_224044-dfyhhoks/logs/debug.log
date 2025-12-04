@@ -1,0 +1,33 @@
+2025-08-23 22:40:44,164 INFO    MainThread:1178465 [wandb_setup.py:_flush():79] Current SDK version is 0.18.2
+2025-08-23 22:40:44,164 INFO    MainThread:1178465 [wandb_setup.py:_flush():79] Configure stats pid to 1178465
+2025-08-23 22:40:44,164 INFO    MainThread:1178465 [wandb_setup.py:_flush():79] Loading settings from /mnt/webscistorage/cc7738/.config/wandb/settings
+2025-08-23 22:40:44,164 INFO    MainThread:1178465 [wandb_setup.py:_flush():79] Loading settings from /mnt/webscistorage/cc7738/ws_joella/EnergyTSF/GNN/Graph-WaveNet-master-origin/wandb/settings
+2025-08-23 22:40:44,164 INFO    MainThread:1178465 [wandb_setup.py:_flush():79] Loading settings from environment variables: {'root_dir': './wandb_runs', 'project': 'GWN-Grid-SYNTHETIC_EASY-5', 'mode': 'online', 'entity': ''}
+2025-08-23 22:40:44,164 INFO    MainThread:1178465 [wandb_setup.py:_flush():79] Applying setup settings: {'mode': 'online', '_disable_service': None}
+2025-08-23 22:40:44,164 INFO    MainThread:1178465 [wandb_setup.py:_flush():79] Inferring run settings from compute environment: {'program_relpath': 'GNN/Graph-WaveNet-master-origin/_wandb_proxy.py', 'program_abspath': '/mnt/webscistorage/cc7738/ws_joella/EnergyTSF/GNN/Graph-WaveNet-master-origin/_wandb_proxy.py', 'program': '_wandb_proxy.py'}
+2025-08-23 22:40:44,164 INFO    MainThread:1178465 [wandb_setup.py:_flush():79] Applying login settings: {}
+2025-08-23 22:40:44,164 INFO    MainThread:1178465 [wandb_init.py:_log_setup():532] Logging user logs to ./wandb_runs/wandb/run-20250823_224044-dfyhhoks/logs/debug.log
+2025-08-23 22:40:44,165 INFO    MainThread:1178465 [wandb_init.py:_log_setup():533] Logging internal logs to ./wandb_runs/wandb/run-20250823_224044-dfyhhoks/logs/debug-internal.log
+2025-08-23 22:40:44,165 INFO    MainThread:1178465 [wandb_init.py:init():616] calling init triggers
+2025-08-23 22:40:44,165 INFO    MainThread:1178465 [wandb_init.py:init():623] wandb.init called with sweep_config: {}
+config: {'data': 'data/FRANCE', 'device': 'cuda:0', 'epochs': 50, 'batch_size': 64, 'seq_length': 12, 'pred_length': 12, 'learning_rate': 0.001, 'dropout': 0.3, 'nhid': 32, 'weight_decay': 0.0001, 'adjtype': 'doubletransition', 'gcn_bool': True, 'addaptadj': True, 'randomadj': True, 'print_every': 50}
+2025-08-23 22:40:44,165 INFO    MainThread:1178465 [wandb_init.py:init():666] starting backend
+2025-08-23 22:40:44,165 INFO    MainThread:1178465 [wandb_init.py:init():670] sending inform_init request
+2025-08-23 22:40:44,168 INFO    MainThread:1178465 [backend.py:_multiprocessing_setup():104] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2025-08-23 22:40:44,169 INFO    MainThread:1178465 [wandb_init.py:init():683] backend started and connected
+2025-08-23 22:40:44,173 INFO    MainThread:1178465 [wandb_init.py:init():778] updated telemetry
+2025-08-23 22:40:44,198 INFO    MainThread:1178465 [wandb_init.py:init():811] communicating run to backend with 90.0 second timeout
+2025-08-23 22:40:44,544 INFO    MainThread:1178465 [wandb_init.py:init():862] starting run threads in backend
+2025-08-23 22:40:44,739 INFO    MainThread:1178465 [wandb_run.py:_console_start():2464] atexit reg
+2025-08-23 22:40:44,739 INFO    MainThread:1178465 [wandb_run.py:_redirect():2312] redirect: wrap_raw
+2025-08-23 22:40:44,739 INFO    MainThread:1178465 [wandb_run.py:_redirect():2377] Wrapping output streams.
+2025-08-23 22:40:44,739 INFO    MainThread:1178465 [wandb_run.py:_redirect():2402] Redirects installed.
+2025-08-23 22:40:44,741 INFO    MainThread:1178465 [wandb_init.py:init():906] run started, returning control to user process
+2025-08-23 22:40:44,741 INFO    MainThread:1178465 [wandb_run.py:_config_callback():1393] config_cb None None {'env_flags': {'GWN_DIAG_MODE': 'neighbor', 'GWN_USE_CHEBY': '0', 'GWN_USE_POWER': '0'}}
+2025-08-23 22:40:47,058 INFO    MainThread:1178465 [wandb_run.py:_finish():2163] finishing run gabiyueyue26-karlsruhe-institute-of-technology/GWN-Grid-SYNTHETIC_EASY-5/dfyhhoks
+2025-08-23 22:40:47,059 INFO    MainThread:1178465 [wandb_run.py:_atexit_cleanup():2427] got exitcode: 0
+2025-08-23 22:40:47,059 INFO    MainThread:1178465 [wandb_run.py:_restore():2409] restore
+2025-08-23 22:40:47,059 INFO    MainThread:1178465 [wandb_run.py:_restore():2415] restore done
+2025-08-23 22:40:49,155 INFO    MainThread:1178465 [wandb_run.py:_footer_history_summary_info():4042] rendering history
+2025-08-23 22:40:49,155 INFO    MainThread:1178465 [wandb_run.py:_footer_history_summary_info():4074] rendering summary
+2025-08-23 22:40:49,169 INFO    MainThread:1178465 [wandb_run.py:_footer_sync_info():4001] logging synced files

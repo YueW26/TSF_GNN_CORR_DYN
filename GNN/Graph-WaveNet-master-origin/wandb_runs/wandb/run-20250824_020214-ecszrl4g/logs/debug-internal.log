@@ -1,0 +1,18 @@
+{"time":"2025-08-24T02:02:14.832358977+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-24T02:02:14.832391797+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250824_020214-ecszrl4g/logs/debug-core.log"}
+{"time":"2025-08-24T02:02:14.833773526+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-24T02:02:14.842018762+02:00","level":"INFO","msg":"created new stream","id":"ecszrl4g"}
+{"time":"2025-08-24T02:02:14.842090152+02:00","level":"INFO","msg":"stream: started","id":"ecszrl4g"}
+{"time":"2025-08-24T02:02:14.842132281+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"ecszrl4g"}}
+{"time":"2025-08-24T02:02:14.84226622+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"ecszrl4g"}}
+{"time":"2025-08-24T02:02:14.842374389+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"ecszrl4g"}}
+{"time":"2025-08-24T02:02:15.1655646+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-24T02:02:15.170617031+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-24T02:12:00.312585658+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-24T02:12:00.320933322+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-24T02:12:01.225432355+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-24T02:12:02.431805574+02:00","level":"INFO","msg":"stream: closing","id":"ecszrl4g"}
+{"time":"2025-08-24T02:12:02.431837403+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"ecszrl4g"}}
+{"time":"2025-08-24T02:12:02.431887513+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"ecszrl4g"}}
+{"time":"2025-08-24T02:12:02.431882803+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"ecszrl4g"}}
+{"time":"2025-08-24T02:12:02.434113316+02:00","level":"INFO","msg":"stream: closed","id":"ecszrl4g"}

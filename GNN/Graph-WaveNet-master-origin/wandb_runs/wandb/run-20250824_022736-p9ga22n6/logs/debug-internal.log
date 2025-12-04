@@ -1,0 +1,18 @@
+{"time":"2025-08-24T02:27:36.4696821+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-24T02:27:36.46969767+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250824_022736-p9ga22n6/logs/debug-core.log"}
+{"time":"2025-08-24T02:27:36.470727102+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-24T02:27:36.478084984+02:00","level":"INFO","msg":"created new stream","id":"p9ga22n6"}
+{"time":"2025-08-24T02:27:36.478148204+02:00","level":"INFO","msg":"stream: started","id":"p9ga22n6"}
+{"time":"2025-08-24T02:27:36.478160634+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"p9ga22n6"}}
+{"time":"2025-08-24T02:27:36.478177143+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"p9ga22n6"}}
+{"time":"2025-08-24T02:27:36.478210423+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"p9ga22n6"}}
+{"time":"2025-08-24T02:27:36.946975716+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-24T02:27:36.952354434+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-24T02:32:45.375027723+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-24T02:32:45.379001582+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-24T02:32:46.112794031+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-24T02:32:47.416880547+02:00","level":"INFO","msg":"stream: closing","id":"p9ga22n6"}
+{"time":"2025-08-24T02:32:47.416913776+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"p9ga22n6"}}
+{"time":"2025-08-24T02:32:47.416953206+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"p9ga22n6"}}
+{"time":"2025-08-24T02:32:47.416975326+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"p9ga22n6"}}
+{"time":"2025-08-24T02:32:47.419196339+02:00","level":"INFO","msg":"stream: closed","id":"p9ga22n6"}

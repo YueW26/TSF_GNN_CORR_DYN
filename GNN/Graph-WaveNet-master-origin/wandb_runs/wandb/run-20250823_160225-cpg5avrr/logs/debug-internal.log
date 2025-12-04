@@ -1,0 +1,18 @@
+{"time":"2025-08-23T16:02:25.983095343+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-23T16:02:25.983130023+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250823_160225-cpg5avrr/logs/debug-core.log"}
+{"time":"2025-08-23T16:02:25.984499092+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-23T16:02:25.992850228+02:00","level":"INFO","msg":"created new stream","id":"cpg5avrr"}
+{"time":"2025-08-23T16:02:25.992909877+02:00","level":"INFO","msg":"stream: started","id":"cpg5avrr"}
+{"time":"2025-08-23T16:02:25.992954007+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"cpg5avrr"}}
+{"time":"2025-08-23T16:02:25.993001507+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"cpg5avrr"}}
+{"time":"2025-08-23T16:02:25.992951907+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"cpg5avrr"}}
+{"time":"2025-08-23T16:02:26.387206541+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-23T16:02:26.392383671+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-23T16:07:35.922226963+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-23T16:07:35.937834892+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-23T16:07:39.157114528+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-23T16:07:40.361418772+02:00","level":"INFO","msg":"stream: closing","id":"cpg5avrr"}
+{"time":"2025-08-23T16:07:40.361452151+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"cpg5avrr"}}
+{"time":"2025-08-23T16:07:40.361477201+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"cpg5avrr"}}
+{"time":"2025-08-23T16:07:40.361517071+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"cpg5avrr"}}
+{"time":"2025-08-23T16:07:40.367130988+02:00","level":"INFO","msg":"stream: closed","id":"cpg5avrr"}

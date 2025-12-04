@@ -1,0 +1,18 @@
+{"time":"2025-08-24T01:14:52.850289297+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-24T01:14:52.850320947+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250824_011452-vgk92w3l/logs/debug-core.log"}
+{"time":"2025-08-24T01:14:52.851775996+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-24T01:14:52.861717492+02:00","level":"INFO","msg":"created new stream","id":"vgk92w3l"}
+{"time":"2025-08-24T01:14:52.861760362+02:00","level":"INFO","msg":"stream: started","id":"vgk92w3l"}
+{"time":"2025-08-24T01:14:52.861796362+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"vgk92w3l"}}
+{"time":"2025-08-24T01:14:52.861793402+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"vgk92w3l"}}
+{"time":"2025-08-24T01:14:52.861845551+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"vgk92w3l"}}
+{"time":"2025-08-24T01:14:53.182401114+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-24T01:14:53.187327778+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-24T01:16:39.031425637+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-24T01:16:39.038996181+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-24T01:16:39.715282346+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-24T01:16:40.930318529+02:00","level":"INFO","msg":"stream: closing","id":"vgk92w3l"}
+{"time":"2025-08-24T01:16:40.930347229+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"vgk92w3l"}}
+{"time":"2025-08-24T01:16:40.930376239+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"vgk92w3l"}}
+{"time":"2025-08-24T01:16:40.930392978+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"vgk92w3l"}}
+{"time":"2025-08-24T01:16:40.933736713+02:00","level":"INFO","msg":"stream: closed","id":"vgk92w3l"}

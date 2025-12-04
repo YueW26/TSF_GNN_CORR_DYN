@@ -1,0 +1,18 @@
+{"time":"2025-08-24T00:43:56.907721364+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-24T00:43:56.907754054+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250824_004356-75hg5v84/logs/debug-core.log"}
+{"time":"2025-08-24T00:43:56.909262383+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-24T00:43:56.917364533+02:00","level":"INFO","msg":"created new stream","id":"75hg5v84"}
+{"time":"2025-08-24T00:43:56.917413412+02:00","level":"INFO","msg":"stream: started","id":"75hg5v84"}
+{"time":"2025-08-24T00:43:56.917459392+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"75hg5v84"}}
+{"time":"2025-08-24T00:43:56.917518782+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"75hg5v84"}}
+{"time":"2025-08-24T00:43:56.917471392+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"75hg5v84"}}
+{"time":"2025-08-24T00:43:57.250404974+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-24T00:43:57.255383467+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-24T00:44:54.370403928+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-24T00:44:54.376722221+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-24T00:44:55.184569059+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-24T00:44:56.392954941+02:00","level":"INFO","msg":"stream: closing","id":"75hg5v84"}
+{"time":"2025-08-24T00:44:56.39298818+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"75hg5v84"}}
+{"time":"2025-08-24T00:44:56.39301598+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"75hg5v84"}}
+{"time":"2025-08-24T00:44:56.39305784+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"75hg5v84"}}
+{"time":"2025-08-24T00:44:56.396396515+02:00","level":"INFO","msg":"stream: closed","id":"75hg5v84"}

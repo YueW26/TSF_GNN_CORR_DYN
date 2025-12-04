@@ -1,0 +1,18 @@
+{"time":"2025-08-23T14:07:47.937366601+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-23T14:07:47.937401641+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250823_140747-htkka2rw/logs/debug-core.log"}
+{"time":"2025-08-23T14:07:47.939023767+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-23T14:07:47.954465707+02:00","level":"INFO","msg":"created new stream","id":"htkka2rw"}
+{"time":"2025-08-23T14:07:47.954528026+02:00","level":"INFO","msg":"stream: started","id":"htkka2rw"}
+{"time":"2025-08-23T14:07:47.954574566+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"htkka2rw"}}
+{"time":"2025-08-23T14:07:47.954570626+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"htkka2rw"}}
+{"time":"2025-08-23T14:07:47.954584156+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"htkka2rw"}}
+{"time":"2025-08-23T14:07:48.438349092+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-23T14:07:48.44335128+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-23T14:13:02.069913306+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-23T14:13:02.08262782+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-23T14:13:04.207402152+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-23T14:13:05.414077281+02:00","level":"INFO","msg":"stream: closing","id":"htkka2rw"}
+{"time":"2025-08-23T14:13:05.414110311+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"htkka2rw"}}
+{"time":"2025-08-23T14:13:05.414155401+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"htkka2rw"}}
+{"time":"2025-08-23T14:13:05.414173001+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"htkka2rw"}}
+{"time":"2025-08-23T14:13:05.418543644+02:00","level":"INFO","msg":"stream: closed","id":"htkka2rw"}

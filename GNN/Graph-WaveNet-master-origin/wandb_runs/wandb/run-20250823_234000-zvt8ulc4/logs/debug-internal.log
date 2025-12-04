@@ -1,0 +1,18 @@
+{"time":"2025-08-23T23:40:00.47206842+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-23T23:40:00.47209982+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250823_234000-zvt8ulc4/logs/debug-core.log"}
+{"time":"2025-08-23T23:40:00.47347243+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-23T23:40:00.481824649+02:00","level":"INFO","msg":"created new stream","id":"zvt8ulc4"}
+{"time":"2025-08-23T23:40:00.481886739+02:00","level":"INFO","msg":"stream: started","id":"zvt8ulc4"}
+{"time":"2025-08-23T23:40:00.481931708+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"zvt8ulc4"}}
+{"time":"2025-08-23T23:40:00.481987848+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"zvt8ulc4"}}
+{"time":"2025-08-23T23:40:00.481958208+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"zvt8ulc4"}}
+{"time":"2025-08-23T23:40:00.935858043+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-23T23:40:00.940786436+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-24T00:31:24.863476047+02:00","level":"INFO","msg":"stream: closing","id":"zvt8ulc4"}
+{"time":"2025-08-24T00:31:24.863623996+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-24T00:31:24.868838109+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-24T00:31:26.954593061+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-24T00:31:27.144577079+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"zvt8ulc4"}}
+{"time":"2025-08-24T00:31:27.144619019+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"zvt8ulc4"}}
+{"time":"2025-08-24T00:31:27.144661959+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"zvt8ulc4"}}
+{"time":"2025-08-24T00:31:27.14733891+02:00","level":"INFO","msg":"stream: closed","id":"zvt8ulc4"}

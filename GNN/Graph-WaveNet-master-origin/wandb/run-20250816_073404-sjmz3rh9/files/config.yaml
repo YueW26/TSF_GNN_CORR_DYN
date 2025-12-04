@@ -1,0 +1,82 @@
+_wandb:
+    value:
+        cli_version: 0.18.2
+        m: []
+        python_version: 3.8.20
+        t:
+            "1":
+                - 1
+                - 55
+            "2":
+                - 1
+                - 55
+            "3":
+                - 13
+                - 16
+                - 23
+                - 55
+            "4": 3.8.20
+            "5": 0.18.2
+            "8":
+                - 2
+                - 5
+            "12": 0.18.2
+            "13": linux-x86_64
+addaptadj:
+    value: true
+adjdata:
+    value: data/sensor_graph/adj_mx_france.pkl
+adjtype:
+    value: doubletransition
+aptonly:
+    value: false
+batch_size:
+    value: 64
+data:
+    value: data/FRANCE
+device:
+    value: cuda:0
+dropout:
+    value: 0.3
+enhance:
+    value: both
+epochs:
+    value: 10
+expid:
+    value: 1
+gcn_bool:
+    value: true
+graph_alpha:
+    value: 0.5
+graph_mode:
+    value: lowpass
+in_dim:
+    value: 2
+learning_rate:
+    value: 0.001
+nhid:
+    value: 32
+num_nodes:
+    value: 10
+pred_length:
+    value: 96
+print_every:
+    value: 50
+randomadj:
+    value: true
+run_multiple_experiments:
+    value: false
+save:
+    value: ./garage/france/
+seq_length:
+    value: 96
+series_kernel:
+    value: 25
+wandb:
+    value: true
+wandb_project:
+    value: MyEnergyTSF
+wandb_runname:
+    value: FRANCE_both_enhance
+weight_decay:
+    value: 0.0001

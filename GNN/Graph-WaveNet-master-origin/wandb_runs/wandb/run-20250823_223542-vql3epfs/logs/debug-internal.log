@@ -1,0 +1,18 @@
+{"time":"2025-08-23T22:35:42.85046257+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-23T22:35:42.850508109+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250823_223542-vql3epfs/logs/debug-core.log"}
+{"time":"2025-08-23T22:35:42.852051048+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-23T22:35:42.861168919+02:00","level":"INFO","msg":"created new stream","id":"vql3epfs"}
+{"time":"2025-08-23T22:35:42.861237488+02:00","level":"INFO","msg":"stream: started","id":"vql3epfs"}
+{"time":"2025-08-23T22:35:42.861285168+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"vql3epfs"}}
+{"time":"2025-08-23T22:35:42.861295258+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"vql3epfs"}}
+{"time":"2025-08-23T22:35:42.861323987+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"vql3epfs"}}
+{"time":"2025-08-23T22:35:43.292864168+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-23T22:35:43.297749571+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-23T22:36:40.532733626+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-23T22:36:40.538723781+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-23T22:36:42.594100901+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-23T22:36:43.81309052+02:00","level":"INFO","msg":"stream: closing","id":"vql3epfs"}
+{"time":"2025-08-23T22:36:43.813119259+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"vql3epfs"}}
+{"time":"2025-08-23T22:36:43.813156019+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"vql3epfs"}}
+{"time":"2025-08-23T22:36:43.813174359+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"vql3epfs"}}
+{"time":"2025-08-23T22:36:43.816437144+02:00","level":"INFO","msg":"stream: closed","id":"vql3epfs"}

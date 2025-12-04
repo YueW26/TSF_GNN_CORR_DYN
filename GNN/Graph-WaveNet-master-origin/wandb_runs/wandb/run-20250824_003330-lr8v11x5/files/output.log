@@ -1,0 +1,17 @@
+检测到合成数据集：SYNTHETIC_EASY
+配置参数: 节点数=12, 邻接矩阵=data/sensor_graph/adj_mx_synthetic_easy.pkl
+🏋️ 运行单个实验...
+📊 配置: seq_length=12, pred_length=12
+🔄 为 seq_length=12, pred_length=12 生成数据...
+⚠️  不支持的数据集类型: DATA/FSYNTHETIC_EASY
+跳过数据生成，使用现有数据...
+Traceback (most recent call last):
+  File "train.py", line 1070, in <module>
+    result = main_experiment()
+  File "train.py", line 816, in main_experiment
+    dataloader = util.load_dataset(args.data, args.batch_size, args.batch_size, args.batch_size)
+  File "/mnt/webscistorage/cc7738/ws_joella/EnergyTSF/GNN/Graph-WaveNet-master-origin/util.py", line 147, in load_dataset
+    cat_data = np.load(os.path.join(dataset_dir, category + '.npz'))
+  File "/mnt/webscistorage/cc7738/anaconda3/envs/Energy-TSF/lib/python3.8/site-packages/numpy/lib/npyio.py", line 405, in load
+    fid = stack.enter_context(open(os_fspath(file), "rb"))
+FileNotFoundError: [Errno 2] No such file or directory: 'data/FSYNTHETIC_EASY/train.npz'

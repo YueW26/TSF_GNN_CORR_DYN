@@ -1,0 +1,12 @@
+# 大数据文件，不上传到 GitHub
+GNN/Graph-WaveNet-master-origin/data/GERMANY/train.npz
+GNN/Graph-WaveNet-master-origin/data/METR-LA/train.npz
+GNN/Graph-WaveNet-master-origin/data/pems-bay.h5
+
+GNN/MTGNN-master/data/GERMANY/train.npz
+GNN/MTGNN-master/data/pems-bay.h5
+GNN/MTGNN-master/data/solar_AL.txt
+GNN/MTGNN-master/data/METR-LA/train.npz
+
+# 训练输出模型文件，也不需要上传
+GNN/StemGNN-master/output/

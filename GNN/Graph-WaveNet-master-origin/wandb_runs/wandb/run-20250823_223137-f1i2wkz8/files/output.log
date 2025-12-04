@@ -1,0 +1,33 @@
+⚠️  未识别的数据集: DATA/SYNTHETIC_EASY
+使用默认配置: 节点数=207
+🏋️ 运行单个实验...
+📊 配置: seq_length=12, pred_length=12
+🔄 为 seq_length=12, pred_length=12 生成数据...
+⚠️  不支持的数据集类型: DATA/SYNTHETIC_EASY
+跳过数据生成，使用现有数据...
+Namespace(addaptadj=True, adjdata='data/sensor_graph/adj_mx.pkl', adjtype='doubletransition', aptonly=False, batch_size=64, data='data/SYNTHETIC_EASY', device='cuda:0', dropout=0.3, epochs=50, expid=1, gcn_bool=True, in_dim=2, learning_rate=0.001, nhid=32, num_nodes=207, pred_length=12, print_every=50, randomadj=True, run_multiple_experiments=False, save='./garage/metr', seq_length=12, weight_decay=0.0001)
+start training...
+Traceback (most recent call last):
+  File "train.py", line 1038, in <module>
+    result = main_experiment()
+  File "train.py", line 821, in main_experiment
+    metrics = engine.train(trainx, trainy[:,0,:,:])
+  File "/mnt/webscistorage/cc7738/ws_joella/EnergyTSF/GNN/Graph-WaveNet-master-origin/engine.py", line 18, in train
+    output = self.model(input)
+  File "/mnt/webscistorage/cc7738/anaconda3/envs/Energy-TSF/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/webscistorage/cc7738/ws_joella/EnergyTSF/GNN/Graph-WaveNet-master-origin/model.py", line 445, in forward
+    x = self.gconv[layer_idx](x, new_supports)
+  File "/mnt/webscistorage/cc7738/anaconda3/envs/Energy-TSF/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/webscistorage/cc7738/ws_joella/EnergyTSF/GNN/Graph-WaveNet-master-origin/model.py", line 143, in forward
+    x1 = self.nconv(x, A_use)
+  File "/mnt/webscistorage/cc7738/anaconda3/envs/Energy-TSF/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1130, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/mnt/webscistorage/cc7738/ws_joella/EnergyTSF/GNN/Graph-WaveNet-master-origin/model.py", line 17, in forward
+    return torch.einsum("ncvl,vw->ncwl", (x, A)).contiguous()
+  File "/mnt/webscistorage/cc7738/anaconda3/envs/Energy-TSF/lib/python3.8/site-packages/torch/functional.py", line 358, in einsum
+    return einsum(equation, *_operands)
+  File "/mnt/webscistorage/cc7738/anaconda3/envs/Energy-TSF/lib/python3.8/site-packages/torch/functional.py", line 360, in einsum
+    return _VF.einsum(equation, operands)  # type: ignore[attr-defined]
+RuntimeError: einsum(): operands do not broadcast with remapped shapes [original->remapped]: [64, 32, 12, 255]->[64, 32, 1, 255, 12] [207, 207]->[1, 1, 207, 1, 207]

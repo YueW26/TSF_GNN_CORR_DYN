@@ -1,0 +1,18 @@
+{"time":"2025-08-23T22:40:44.173787763+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-23T22:40:44.173805143+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250823_224044-dfyhhoks/logs/debug-core.log"}
+{"time":"2025-08-23T22:40:44.175008302+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-23T22:40:44.183964279+02:00","level":"INFO","msg":"created new stream","id":"dfyhhoks"}
+{"time":"2025-08-23T22:40:44.184033048+02:00","level":"INFO","msg":"stream: started","id":"dfyhhoks"}
+{"time":"2025-08-23T22:40:44.184086727+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"dfyhhoks"}}
+{"time":"2025-08-23T22:40:44.184144266+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"dfyhhoks"}}
+{"time":"2025-08-23T22:40:44.184087667+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"dfyhhoks"}}
+{"time":"2025-08-23T22:40:44.553225162+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-23T22:40:44.558461503+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-23T22:40:47.059983326+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-23T22:40:47.249964571+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-23T22:40:47.976816246+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-23T22:40:49.172313107+02:00","level":"INFO","msg":"stream: closing","id":"dfyhhoks"}
+{"time":"2025-08-23T22:40:49.172335716+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"dfyhhoks"}}
+{"time":"2025-08-23T22:40:49.172369456+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"dfyhhoks"}}
+{"time":"2025-08-23T22:40:49.172395285+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"dfyhhoks"}}
+{"time":"2025-08-23T22:40:49.174538129+02:00","level":"INFO","msg":"stream: closed","id":"dfyhhoks"}

@@ -1,0 +1,18 @@
+{"time":"2025-08-24T02:32:48.894789105+02:00","level":"INFO","msg":"using version","core version":"0.18.2"}
+{"time":"2025-08-24T02:32:48.894814005+02:00","level":"INFO","msg":"created symlink","path":"wandb_runs/wandb/run-20250824_023248-lxsferon/logs/debug-core.log"}
+{"time":"2025-08-24T02:32:48.895990535+02:00","level":"ERROR","msg":"dialing: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"}
+{"time":"2025-08-24T02:32:48.902084648+02:00","level":"INFO","msg":"created new stream","id":"lxsferon"}
+{"time":"2025-08-24T02:32:48.902110948+02:00","level":"INFO","msg":"stream: started","id":"lxsferon"}
+{"time":"2025-08-24T02:32:48.902136708+02:00","level":"INFO","msg":"handler: started","stream_id":{"value":"lxsferon"}}
+{"time":"2025-08-24T02:32:48.902195767+02:00","level":"INFO","msg":"writer: Do: started","stream_id":{"value":"lxsferon"}}
+{"time":"2025-08-24T02:32:48.902174937+02:00","level":"INFO","msg":"sender: started","stream_id":{"value":"lxsferon"}}
+{"time":"2025-08-24T02:32:49.254896302+02:00","level":"INFO","msg":"wandb-core","!BADKEY":null}
+{"time":"2025-08-24T02:32:49.259790934+02:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-08-24T02:42:35.488381176+02:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-08-24T02:42:35.492535984+02:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-08-24T02:42:36.595257964+02:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-08-24T02:42:37.858601252+02:00","level":"INFO","msg":"stream: closing","id":"lxsferon"}
+{"time":"2025-08-24T02:42:37.858639002+02:00","level":"INFO","msg":"handler: closed","stream_id":{"value":"lxsferon"}}
+{"time":"2025-08-24T02:42:37.858684002+02:00","level":"INFO","msg":"writer: Close: closed","stream_id":{"value":"lxsferon"}}
+{"time":"2025-08-24T02:42:37.858693922+02:00","level":"INFO","msg":"sender: closed","stream_id":{"value":"lxsferon"}}
+{"time":"2025-08-24T02:42:37.862032065+02:00","level":"INFO","msg":"stream: closed","id":"lxsferon"}
