@@ -1,5 +1,5 @@
 
-# SeriesGCN: Capturing High-Order Covariance with Message Passing
+# DynGCN: Capturing High-Order Covariance with Message Passing
 
 
 
