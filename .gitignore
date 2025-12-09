@@ -10,3 +10,5 @@ GNN/MTGNN-master/data/METR-LA/train.npz
 
 # 训练输出模型文件，也不需要上传
 GNN/StemGNN-master/output/
+Graph-DynGCN/data/pems-bay.h5
+Graph-DynGCN/data/TMS_traffic_counts.csv
