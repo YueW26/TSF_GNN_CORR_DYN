@@ -12,3 +12,5 @@ GNN/MTGNN-master/data/METR-LA/train.npz
 GNN/StemGNN-master/output/
 Graph-DynGCN/data/pems-bay.h5
 Graph-DynGCN/data/TMS_traffic_counts.csv
+Graph-DynGCN/data/pems-bay.h5
+Graph-DynGCN/data/TMS_traffic_counts.csv
