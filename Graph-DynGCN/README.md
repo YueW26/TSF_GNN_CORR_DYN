@@ -324,8 +324,8 @@ DEVICE=cuda:0 EXP_ID=6 bash run_experiments_ab.sh
   - Reduce `DATA_LIST`, `BATCH_LIST`, `LR_LIST`, or comment out unused experiment blocks.
   - Avoid `EXP_ID=0` unless you intentionally want all sweeps.
 
-- **Your `train.py` uses different CLI flags**
-  - Edit the command construction in `run_experiments_ab.sh` (`CMD=(python train.py ...)`) to match your script.
+- **`train.py` uses different CLI flags**
+  - Edit the command construction in `run_experiments_ab.sh` (`CMD=(python train.py ...)`) to match script.
 
 ---
 
