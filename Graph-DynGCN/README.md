@@ -1,6 +1,6 @@
-# DynGCN: Dual-Graph Temporal Forecasting with Reproducible Sweeps 
+# DynGCN: 
 
-DynGCN is a **spatiotemporal forecasting model** proposed in our work. It combines a **GraphWaveNet-like temporal backbone** (dilated gated temporal convolutions) with **DynGCN-specific spatial propagation modules**, including **dual-graph propagation** and **power-weighted mixing**. This repo also provides a **reproducible experiment runner** (`run_experiments_ab.sh`) for large-scale sweeps over datasets and hyperparameters, with optional **Weights & Biases (wandb)** logging and aggregated results written to a **CSV**.
+DynGCN is a **spatiotemporal forecasting model** proposed in our work. It combines a **GraphWaveNet-like temporal backbone** (dilated gated temporal convolutions) with **DynGCN-specific spatial propagation modules**, including **dual-graph propagation** and **power-weighted mixing**. This repo also provides a **reproducible experiment runner** (`run_experiments_ab.sh`) for large-scale sweeps over datasets and hyperparameters.
 
 ---
 
