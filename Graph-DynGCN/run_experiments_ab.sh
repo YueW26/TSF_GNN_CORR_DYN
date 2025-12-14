@@ -457,7 +457,8 @@ echo "✅ 实验完成（EXP_ID=$EXP_ID）。wandb 项目：$WANDB_PROJECT"
 echo "📄 结果已累计写入 CSV：$RESULTS_CSV" 
 
 
-
+# git: /mnt/webscistorage/cc7738/ws_joella/CorrGCN
+# cd /mnt/webscistorage/cc7738/ws_joella/CorrGCN/Graph-DynGCN/
 
 
 # RESULTS_CSV=./results_exchange_graph_variants.csv EXP_ID=8 DATA_LIST="data/EXCHANGE" SEQ_LIST="12" PRED_LIST="1 3 6 12" BLOCKS_LIST="4" LAYERS_LIST="2" DEVICE=cuda:0 bash run_experiments_ab.sh
@@ -465,8 +466,6 @@ echo "📄 结果已累计写入 CSV：$RESULTS_CSV"
 # EXP_ID=7 DATA_LIST="data/EXCHANGE" SEQ_LIST="1 3 6 12" PRED_LIST="1 3 6 12" BLOCKS_LIST="4" LAYERS_LIST="2 1" bash run_experiments_ab.sh
 # WANDB_PROJECT=PowerMixAblation WANDB_ENTITY=gabiyueyue26 WANDB_MODE=online WANDB_DIR=./wandb_runs/EXCHANGE_layers RESULTS_CSV=./results_exchange_layers.csv EXP_ID=7 DATA_LIST="data/EXCHANGE" SEQ_LIST="12" PRED_LIST="12" BLOCKS_LIST="4" LAYERS_LIST="2 1" DEVICE=cuda:0 bash run_experiments_ab.sh
 # WANDB_PROJECT=ExAblGraph WANDB_ENTITY=gabiyueyue26 WANDB_MODE=online WANDB_DIR=./wandb_runs/EXCHANGE_graph RESULTS_CSV=./results_exchange_graph_variants.csv DATA_LIST="data/EXCHANGE" SEQ_LIST="1 3 6 12" PRED_LIST="1 3 6 12" DEVICE=cuda:0 GWN_RANDOM_BASE_GRAPH=1 EXP_ID=6 bash run_experiments_ab.sh && WANDB_PROJECT=ExAblGraph WANDB_ENTITY=gabiyueyue26 WANDB_MODE=online WANDB_DIR=./wandb_runs/EXCHANGE_graph RESULTS_CSV=./results_exchange_graph_variants.csv DATA_LIST="data/EXCHANGE" SEQ_LIST="1 3 6 12" PRED_LIST="1 3 6 12" DEVICE=cuda:0 GWN_SECOND_GRAPH_FIXED=1 EXP_ID=6 bash run_experiments_ab.sh && WANDB_PROJECT=ExAblGraph WANDB_ENTITY=gabiyueyue26 WANDB_MODE=online WANDB_DIR=./wandb_runs/EXCHANGE_graph RESULTS_CSV=./results_exchange_graph_variants.csv DATA_LIST="data/EXCHANGE" SEQ_LIST="1 3 6 12" PRED_LIST="1 3 6 12" DEVICE=cuda:0 GWN_DISABLE_SECOND_GRAPH=1 EXP_ID=6 bash run_experiments_ab.sh
-
-
 
 
 ### 5 MODEL ###
