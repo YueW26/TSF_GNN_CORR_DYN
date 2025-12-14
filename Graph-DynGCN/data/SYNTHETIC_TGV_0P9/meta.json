@@ -1,0 +1,10 @@
+{
+  "adj_pkl": "./data/sensor_graph/adj_mx_synthetic_tgv_0p9.pkl",
+  "tgv_measured": 0.15865384615384615,
+  "target_tgv": 0.9,
+  "time_weight": "toggle",
+  "r_high": 12.559432157547898,
+  "r_low": 0.8,
+  "toggle_period": 3,
+  "flip_last_prob": 0.6
+}

@@ -1,0 +1,8 @@
+{
+  "seq_length":12,
+  "pred_length":12,
+  "num_nodes":12,
+  "dataset_root":".\/data\/SYNTHETIC_MEDIUM",
+  "adj_pkl":".\/data\/sensor_graph\/adj_mx_synthetic_medium.pkl",
+  "data_csv":".\/data\/SYNTHETIC_MEDIUM\/synthetic_time_series.csv"
+}

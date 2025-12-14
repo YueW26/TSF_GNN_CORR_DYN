@@ -1,0 +1,760 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+
+# =========================
+# 基础组件
+# =========================
+
+class nconv(nn.Module):
+    """
+    原始的基于邻接的 message passing:
+        x: [B, C, N, T]
+        A: [N, N]
+    out: [B, C, N, T]
+    """
+    def __init__(self):
+        super(nconv, self).__init__()
+
+    def forward(self, x, A):
+        # x_{b,c,:,t} 乘 A  -> einsum( n c v l , v w -> n c w l )
+        return torch.einsum('ncvl,vw->ncwl', (x, A)).contiguous()
+
+
+class linear(nn.Module):
+    """
+    1x1 卷积，用作通道混合（等价于逐节点逐时间的线性层）
+    """
+    def __init__(self, c_in, c_out):
+        super(linear, self).__init__()
+        self.mlp = nn.Conv2d(c_in, c_out, kernel_size=(1, 1), stride=(1, 1), padding=0, bias=True)
+
+    def forward(self, x):
+        return self.mlp(x)
+
+
+# =========================
+# 谱域 Chebyshev 图卷积（可学习系数）
+# =========================
+
+class ChebConv(nn.Module):
+    """
+    Chebyshev 图卷积（谱域近似），满足导师提出的“切比雪夫滤波器”：在特征值/频段上调制增益。
+    - 输入可以是拉普拉斯 L 或根据 A 构造的 L，内部生成 T_k(L~) 的序列并线性组合。
+    - 系数为可学习参数，可导出用于解释（例如是否抑制高频）。
+    形状：
+        x: [B, C_in, N, T]
+        A or L: [N, N]
+        out: [B, C_out, N, T]
+    """
+    def __init__(self, c_in, c_out, K=3, dropout=0.0, use_laplacian=True):
+        super(ChebConv, self).__init__()
+        self.K = K
+        self.dropout = dropout
+        self.use_laplacian = use_laplacian
+
+        # 对每个 Chebyshev 阶次配一个 1x1 卷积以增强表达（与 Diffusion 卷积风格一致）
+        self.theta = nn.ModuleList([nn.Conv2d(c_in, c_out, kernel_size=(1, 1), bias=True) for _ in range(K)])
+        # 另行维护一个显式的可学习谱系数（标量），便于分析导出
+        self.alpha = nn.Parameter(torch.ones(K), requires_grad=True)
+
+        # 运行时记录
+        self.last_cheb_alphas = None  # [K]，便于外部读取
+
+    @staticmethod
+    def _build_laplacian(A, add_self_loops=True, eps=1e-5, device=None):
+        N = A.size(0)
+        if add_self_loops:
+            A = A + torch.eye(N, device=A.device)
+        deg = torch.clamp(A.sum(-1), min=eps)
+        D_inv_sqrt = torch.diag(torch.pow(deg, -0.5))
+        L = torch.eye(N, device=A.device) - D_inv_sqrt @ A @ D_inv_sqrt
+        return L
+
+    def forward(self, x, A_or_L, include_self=True):
+        """
+        include_self: 控制是否在 A 中加自环（与导师“有/无对角”一致）
+        """
+        B, C, N, T = x.shape
+        device = x.device
+
+        # 拿到 L~ = 2L/lmax - I （简化取 lmax≈2）
+        if self.use_laplacian:
+            L = A_or_L
+        else:
+            L = self._build_laplacian(A_or_L, add_self_loops=include_self, device=device)
+        L_tilde = 2.0 * L - torch.eye(L.size(0), device=device)
+
+        # 计算 Chebyshev 多项式 T_k(L~) * x
+        Tx_list = []
+        # T0(x) = x
+        Tx0 = x
+        Tx_list.append(Tx0)
+        if self.K > 1:
+            # T1(x) = L~ x : 仅在节点维乘
+            Tx1 = torch.einsum('vw,bcwl->bcvl', L_tilde, x)
+            Tx_list.append(Tx1)
+            for k in range(2, self.K):
+                Tx2 = 2 * torch.einsum('vw,bcwl->bcvl', L_tilde, Tx1) - Tx0
+                Tx_list.append(Tx2)
+                Tx0, Tx1 = Tx1, Tx2  # 滚动
+
+        out = 0
+        # 收集可学习系数（用于记录/可视化）
+        with torch.no_grad():
+            self.last_cheb_alphas = self.alpha.detach().cpu()
+
+        for k in range(self.K):
+            # 先 1x1 卷积，再加权
+            out = out + self.alpha[k] * self.theta[k](Tx_list[k])
+
+        out = F.dropout(out, self.dropout, training=self.training)
+        return out
+
+
+# =========================
+# 空间域 GCN（支持 Diffusion/PowerLaw）
+# =========================
+
+class gcn(nn.Module):
+    """
+    空间域图卷积层：
+      - 支持 diffusion（逐阶递推）与 power-law（显式 A^k）两种高阶聚合；
+      - 对每个 support 的每个阶次使用 1x1 Conv，结果 concat 再线性变换。
+    """
+    def __init__(self, c_in, c_out, dropout, support_len=3, order=2,
+                 use_power=False, # === NEW ===
+                 diag_mode='self_and_neighbor'  # 'neighbor' or 'self_and_neighbor'
+                 ):
+        super(gcn, self).__init__()
+        self.nconv = nconv()
+        self.dropout = dropout
+        self.order = order
+        self.support_len = support_len
+        self.use_power = use_power
+        assert diag_mode in ['neighbor', 'self_and_neighbor']
+        self.diag_mode = diag_mode
+
+        c_total = (order * support_len + 1) * c_in
+        self.mlp = linear(c_total, c_out)
+
+        # 幂律系数（针对每个阶次 1..order），可解释
+        self.power_coef = nn.Parameter(torch.ones(order), requires_grad=True)  # === NEW ===
+        self.last_power_coef = None  # 记录用于可视化
+
+    @staticmethod
+    def _apply_diag_policy(A, mode):
+        if mode == 'neighbor':
+            # 去掉自环
+            A = A.clone()
+            A.fill_diagonal_(0.0)
+            return A
+        else:
+            # 默认包含自环（上层可能已含 I，这里不额外加）
+            return A
+
+    @staticmethod
+    def _matrix_powers(A, K):
+        # 返回 [A^1, A^2, ..., A^K]
+        powers = []
+        Ak = A
+        for _ in range(K):
+            powers.append(Ak)
+            Ak = Ak @ A
+        return powers
+
+    def forward(self, x, supports):
+        """
+        x: [B, C, N, T]
+        supports: list of [N,N]
+        """
+        # 记录幂律系数
+        with torch.no_grad():
+            self.last_power_coef = self.power_coef.detach().cpu()
+
+        out = [x]
+        for A in supports:
+            A_use = self._apply_diag_policy(A, self.diag_mode)
+            if self.use_power:
+                # 显式 A^k
+                A_pows = self._matrix_powers(A_use, self.order)
+                # 按 learnable 系数相加
+                x_msg = 0
+                x_tmp = x
+                for k_idx, Ak in enumerate(A_pows):
+                    xk = self.nconv(x_tmp, Ak)
+                    x_msg = x_msg + self.power_coef[k_idx] * xk
+                    # 不滚动 x，始终以原始 x 为 base（常见 power 设计）
+                out.append(x_msg)
+            else:
+                # diffusion: 递推
+                x1 = self.nconv(x, A_use)
+                out.append(x1)
+                x_prev = x1
+                for k in range(2, self.order + 1):
+                    x2 = self.nconv(x_prev, A_use)
+                    out.append(x2)
+                    x_prev = x2
+
+        h = torch.cat(out, dim=1)
+        h = self.mlp(h)
+        h = F.dropout(h, self.dropout, training=self.training)
+        return h
+
+
+# =========================
+# Graph WaveNet 主体（增强版）
+# =========================
+
+class gwnet(nn.Module):
+    """
+    增强版 Graph WaveNet:
+    - 保持原始接口，新增若干可选功能：
+        1) 邻接矩阵设计：是否包含对角线（自环），训练时导出可视化矩阵
+        2) Two-Linear gating：通道注意力 + 多 support/阶次权重
+        3) 幂律传播（A^k）与 Diffusion 二选一
+        4) Chebyshev 谱滤波模块（代替/并联 空间卷积）
+        5) 运行期导出：自适应邻接、幂律系数、切比雪夫系数，用于解释与可视化
+    """
+    def __init__(
+        self,
+        device,
+        num_nodes,
+        dropout=0.3,
+        supports=None,
+        gcn_bool=True,
+        addaptadj=True,
+        aptinit=None,
+        in_dim=2,
+        out_dim=12,
+        residual_channels=32,
+        dilation_channels=32,
+        skip_channels=256,
+        end_channels=512,
+        kernel_size=2,
+        blocks=4,
+        layers=2,
+        # === NEW: 额外开关/参数 ===
+        diag_mode='self_and_neighbor',         # 'neighbor'（无对角）或 'self_and_neighbor'
+        use_power=False,                       # 是否使用幂律 A^k 代替 diffusion
+        use_cheby=False,                       # 是否使用 Chebyshev 谱卷积替代空间 GCN
+        cheby_K=3,                             # 切比雪夫阶数
+        two_linear_gates=True,                 # 通道权重 + 邻接组合权重
+        store_adp_for_viz=True                 # 是否缓存可视化信息
+    ):
+        super(gwnet, self).__init__()
+        self.device = device
+        self.dropout = dropout
+        self.blocks = blocks
+        self.layers = layers
+        self.gcn_bool = gcn_bool
+        self.addaptadj = addaptadj
+        self.supports = supports  # 列表：可能包含前向/后向/对称等
+        self.diag_mode = diag_mode
+        self.use_power = use_power
+        self.use_cheby = use_cheby
+        self.cheby_K = cheby_K
+        self.two_linear_gates = two_linear_gates
+        self.store_adp_for_viz = store_adp_for_viz
+
+        # 记录/导出字段
+        self.last_adp = None         # 最近一次前向使用的自适应邻接 [N,N]
+        self.last_support_weights = None  # 多 support/阶次的组合权重（softmax 后）
+        self.last_cheb_alphas = None  # 谱滤波器系数
+        self.last_power_coef = None   # 幂律系数
+
+        # 模块列表
+        self.filter_convs = nn.ModuleList()
+        self.gate_convs = nn.ModuleList()
+        self.residual_convs = nn.ModuleList()
+        self.skip_convs = nn.ModuleList()
+        self.bn = nn.ModuleList()
+        self.gconv = nn.ModuleList()      # 空间域 GCN
+        self.cheb_convs = nn.ModuleList() # 谱域 Chebyshev
+        self.supports_len = 0
+
+        # 输入升维
+        self.start_conv = nn.Conv2d(in_channels=in_dim, out_channels=residual_channels, kernel_size=(1, 1))
+        receptive_field = 1
+
+        # 统计有效 supports 个数
+        if supports is not None:
+            self.supports_len += len(supports)
+
+        # 自适应邻接
+        if self.gcn_bool and self.addaptadj:
+            if aptinit is None:
+                if self.supports is None:
+                    self.supports = []
+                self.nodevec1 = nn.Parameter(torch.randn(num_nodes, 10, device=device), requires_grad=True)
+                self.nodevec2 = nn.Parameter(torch.randn(10, num_nodes, device=device), requires_grad=True)
+                self.supports_len += 1
+            else:
+                if self.supports is None:
+                    self.supports = []
+                # 使用 SVD 初始化低秩嵌入
+                U, S, V = torch.svd(aptinit)
+                initemb1 = U[:, :10] @ torch.diag(S[:10].pow(0.5))
+                initemb2 = torch.diag(S[:10].pow(0.5)) @ V[:, :10].t()
+                self.nodevec1 = nn.Parameter(initemb1.to(device), requires_grad=True)
+                self.nodevec2 = nn.Parameter(initemb2.to(device), requires_grad=True)
+                self.supports_len += 1
+
+        # === NEW: Two-Linear gating ===
+        # (1) 通道注意力：基于全局 avg-pool 的 1x1 conv -> [B, C, 1, 1] -> 缩放通道
+        if self.two_linear_gates:
+            self.channel_gate = nn.Sequential(
+                nn.AdaptiveAvgPool2d((1, 1)),
+                nn.Conv2d(residual_channels, residual_channels, kernel_size=1, bias=True),
+                nn.Sigmoid()
+            )
+        # (2) 多 support/阶次的组合权重（输入为全局 pooled token），输出长度 = supports_len*(order或K)
+        # 为简洁，这里每层都会根据特征自适应地产生一组 softmax 权重
+        def _support_combo_dim():
+            base = self.supports_len if self.supports_len > 0 else 0
+            if self.gcn_bool and not self.use_cheby:
+                # 空间域：每个 support 有 order 个阶次
+                return max(1, base) * (2 if self.use_power else self.layers_order)
+            elif self.gcn_bool and self.use_cheby:
+                # 谱域：每个 support 提供一个 L，K 个系数由 ChebConv 内部学，这里只对 support 做加权
+                return max(1, base)
+            else:
+                return 0
+
+        # 在 build layer 之前先确定每层的阶数（在 gcn 初始化时需要），这里用固定的 order=2（兼容旧接口）
+        self.layers_order = 2
+
+        if self.two_linear_gates and self.gcn_bool and (self.supports_len > 0 or self.addaptadj):
+            self.support_weight_mlp = nn.Sequential(
+                nn.AdaptiveAvgPool2d((1, 1)),
+                nn.Conv2d(residual_channels, 64, kernel_size=1),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(64, _support_combo_dim(), kernel_size=1)  # 输出维度见上面函数
+            )
+
+        # 堆叠网络
+        new_dilation = 1
+        for b in range(blocks):
+            additional_scope = kernel_size - 1
+            for i in range(layers):
+                # dilated TCN 的 filter/gate 分支
+                self.filter_convs.append(
+                    nn.Conv2d(residual_channels, dilation_channels, kernel_size=(1, kernel_size), dilation=new_dilation)
+                )
+                self.gate_convs.append(
+                    nn.Conv2d(residual_channels, dilation_channels, kernel_size=(1, kernel_size), dilation=new_dilation)
+                )
+
+                # residual & skip
+                self.residual_convs.append(nn.Conv2d(dilation_channels, residual_channels, kernel_size=(1, 1)))
+                self.skip_convs.append(nn.Conv2d(dilation_channels, skip_channels, kernel_size=(1, 1)))
+                self.bn.append(nn.BatchNorm2d(residual_channels))
+
+                # 空间层：二选一（空间域 or 谱域），或关闭（保留 1x1 resid）
+                if self.gcn_bool:
+                    if self.use_cheby:
+                        self.cheb_convs.append(
+                            ChebConv(dilation_channels, residual_channels, K=self.cheby_K, dropout=dropout, use_laplacian=False)
+                        )
+                        self.gconv.append(None)
+                    else:
+                        self.gconv.append(
+                            gcn(dilation_channels, residual_channels, dropout,
+                                support_len=self.supports_len if (self.supports_len > 0 or self.addaptadj) else 0,
+                                order=self.layers_order, use_power=self.use_power, diag_mode=self.diag_mode)
+                        )
+                        self.cheb_convs.append(None)
+                else:
+                    self.gconv.append(None)
+                    self.cheb_convs.append(None)
+
+                new_dilation *= 2
+                receptive_field += additional_scope
+                additional_scope *= 2
+
+        self.receptive_field = receptive_field
+
+        # 结尾 head
+        self.end_conv_1 = nn.Conv2d(skip_channels, end_channels, kernel_size=(1, 1), bias=True)
+        self.end_conv_2 = nn.Conv2d(end_channels, out_dim, kernel_size=(1, 1), bias=True)
+
+    # ====== 工具：构造/组合 supports ======
+    def _build_adaptive_adj(self):
+        adp = F.softmax(F.relu(self.nodevec1 @ self.nodevec2), dim=1)
+        if self.store_adp_for_viz:
+            self.last_adp = adp.detach().cpu()
+        return adp
+
+    def _collect_supports(self):
+        sup = []
+        if self.supports is not None:
+            sup += self.supports
+        if self.gcn_bool and self.addaptadj:
+            sup.append(self._build_adaptive_adj())
+        return sup
+
+    def forward(self, input):
+        """
+        input: [B, in_dim, N, T_in]
+        output: [B, out_dim, N, T_out]
+        """
+        in_len = input.size(3)
+        if in_len < self.receptive_field:
+            x = F.pad(input, (self.receptive_field - in_len, 0, 0, 0))
+        else:
+            x = input
+
+        # 初始升维
+        x = self.start_conv(x)  # [B, C_res, N, T]
+
+        # Two-Linear: 通道门控
+        if self.two_linear_gates:
+            gate = self.channel_gate(x)  # [B, C_res, 1, 1]
+            x = x * gate
+
+        skip = 0
+
+        # 收集 supports（包含自适应）
+        current_supports = None
+        if self.gcn_bool and (self.supports is not None or self.addaptadj):
+            current_supports = self._collect_supports()
+
+        # 统计“组合权重”长度（用于记录）：不同配置下长度不同
+        combo_len = 0
+        if self.two_linear_gates and self.gcn_bool and current_supports is not None:
+            if self.use_cheby:
+                combo_len = len(current_supports)
+            else:
+                combo_len = len(current_supports) * (self.layers_order if not self.use_power else self.layers_order)
+
+        # 记录上一层的 support 组合权重
+        self.last_support_weights = None
+
+        layer_idx = 0
+        for b in range(self.blocks):
+            for i in range(self.layers):
+                residual = x
+
+                # dilated TCN
+                filt = torch.tanh(self.filter_convs[layer_idx](residual))
+                gate = torch.sigmoid(self.gate_convs[layer_idx](residual))
+                x = filt * gate
+
+                # skip
+                s = self.skip_convs[layer_idx](x)
+                try:
+                    skip = skip[:, :, :, -s.size(3):]
+                except Exception:
+                    skip = 0
+                skip = s + skip
+
+                # 空间聚合：gcn / cheby / 1x1 residual
+                if self.gcn_bool and current_supports is not None:
+                    if self.two_linear_gates:
+                        # 基于当前特征产生支持/阶次组合权重
+                        raw_w = self.support_weight_mlp(residual)  # [B, combo, 1, 1]
+                        comb_w = torch.softmax(raw_w.mean(dim=0, keepdim=True), dim=1)  # 以 batch 均值平滑
+                        # 记录
+                        with torch.no_grad():
+                            self.last_support_weights = comb_w.squeeze().detach().cpu()
+                    # 空间域
+                    if self.gconv[layer_idx] is not None:
+                        # 将 supports 按需要进行组合（这里简单做均匀/learnable 加权：对每个 support 逐次送入 gcn 再相加
+                        x_space = 0
+                        if self.two_linear_gates:
+                            # 将 comb_w 拆成 per-support 的份额（order 内部在 gcn 层里处理）
+                            # comb_w: [1, combo, 1, 1] -> 展平
+                            weights = comb_w.view(-1)
+                            # 每个 support 一个权重（如果 diffusion，按 support 汇总；若使用幂律，这里仍按 support 粗粒度）
+                            if len(current_supports) > 0:
+                                # 简单地把 combo 拆成 len(current_supports) 份的和（每份含 self.layers_order 个）
+                                per_sup = []
+                                step = self.layers_order if not self.use_power else self.layers_order
+                                for si in range(len(current_supports)):
+                                    start = si * step
+                                    end = start + step
+                                    per_sup.append(weights[start:end].sum())
+                                per_sup = torch.stack(per_sup, dim=0)  # [S]
+                                per_sup = per_sup / (per_sup.sum() + 1e-6)
+                            else:
+                                per_sup = torch.tensor([], device=x.device)
+
+                            for si, A in enumerate(current_supports):
+                                xs = self.gconv[layer_idx](x, [A])
+                                if len(per_sup) > 0:
+                                    x_space = x_space + per_sup[si] * xs
+                                else:
+                                    x_space = x_space + xs
+                        else:
+                            # 无 learnable 组合：简单平均
+                            acc = 0
+                            for A in current_supports:
+                                acc = acc + self.gconv[layer_idx](x, [A])
+                            x_space = acc / float(len(current_supports))
+                        x = x_space
+                    # 谱域
+                    elif self.cheb_convs[layer_idx] is not None:
+                        # 谱域只需要一个 L（由 A 构造）；多 support 的情况简单平均/learnable 加权
+                        def build_L(A):
+                            # 使用 ChebConv 内部的构造：这里只传 A，ChebConv 内部再转 L
+                            return A
+                        if self.two_linear_gates:
+                            weights = torch.softmax(torch.ones(len(current_supports), device=x.device), dim=0) \
+                                if self.last_support_weights is None else torch.softmax(self.last_support_weights.to(x.device), dim=0)
+                            weights = weights / (weights.sum() + 1e-6)
+                            x_spec = 0
+                            for si, A in enumerate(current_supports):
+                                xs = self.cheb_convs[layer_idx](x, build_L(A), include_self=(self.diag_mode == 'self_and_neighbor'))
+                                x_spec = x_spec + weights[si] * xs
+                            x = x_spec
+                        else:
+                            acc = 0
+                            for A in current_supports:
+                                acc = acc + self.cheb_convs[layer_idx](x, build_L(A), include_self=(self.diag_mode == 'self_and_neighbor'))
+                            x = acc / float(len(current_supports))
+                        # 记录谱系数
+                        with torch.no_grad():
+                            self.last_cheb_alphas = self.cheb_convs[layer_idx].last_cheb_alphas
+                    else:
+                        # 退化到 1x1 残差
+                        x = self.residual_convs[layer_idx](x)
+                else:
+                    # 无图聚合，退化为 1x1
+                    x = self.residual_convs[layer_idx](x)
+
+                # 残差 + BN
+                x = x + residual[:, :, :, -x.size(3):]
+                x = self.bn[layer_idx](x)
+
+                # 记录幂律系数
+                if self.gconv[layer_idx] is not None and hasattr(self.gconv[layer_idx], 'last_power_coef'):
+                    with torch.no_grad():
+                        self.last_power_coef = self.gconv[layer_idx].last_power_coef
+
+                layer_idx += 1
+
+        x = F.relu(skip)
+        x = F.relu(self.end_conv_1(x))
+        x = self.end_conv_2(x)
+        return x
+
+
+
+
+
+
+'''
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+from torch.autograd import Variable
+import sys
+
+
+class nconv(nn.Module):
+    def __init__(self):
+        super(nconv,self).__init__()
+
+    def forward(self,x, A):
+        # import pdb; pdb.set_trace()
+        x = torch.einsum('ncvl,vw->ncwl',(x,A))
+        return x.contiguous()
+
+class linear(nn.Module):
+    def __init__(self,c_in,c_out):
+        super(linear,self).__init__()
+        self.mlp = torch.nn.Conv2d(c_in, c_out, kernel_size=(1, 1), padding=(0,0), stride=(1,1), bias=True)
+
+    def forward(self,x):
+        return self.mlp(x)
+
+class gcn(nn.Module):
+    def __init__(self,c_in,c_out,dropout,support_len=3,order=2):
+        super(gcn,self).__init__()
+        self.nconv = nconv()
+        c_in = (order*support_len+1)*c_in
+        self.mlp = linear(c_in,c_out)
+        self.dropout = dropout
+        self.order = order
+
+    def forward(self,x,support):
+        out = [x]
+        for a in support:
+            x1 = self.nconv(x,a) # x*a 
+            out.append(x1)
+            for k in range(2, self.order + 1):
+                x2 = self.nconv(x1,a)
+                out.append(x2)
+                x1 = x2
+
+        h = torch.cat(out,dim=1)
+        h = self.mlp(h)
+        h = F.dropout(h, self.dropout, training=self.training)
+        return h
+
+
+class gwnet(nn.Module):
+    def __init__(self, device, num_nodes, dropout=0.3, supports=None, gcn_bool=True, addaptadj=True, aptinit=None, in_dim=2,out_dim=12,residual_channels=32,dilation_channels=32,skip_channels=256,end_channels=512,kernel_size=2,blocks=4,layers=2):
+        super(gwnet, self).__init__()
+        self.dropout = dropout
+        self.blocks = blocks
+        self.layers = layers
+        self.gcn_bool = gcn_bool
+        self.addaptadj = addaptadj
+
+        self.filter_convs = nn.ModuleList()
+        self.gate_convs = nn.ModuleList()
+        self.residual_convs = nn.ModuleList()
+        self.skip_convs = nn.ModuleList()
+        self.bn = nn.ModuleList()
+        self.gconv = nn.ModuleList()
+
+        self.start_conv = nn.Conv2d(in_channels=in_dim,
+                                    out_channels=residual_channels,
+                                    kernel_size=(1,1))
+        self.supports = supports
+
+        receptive_field = 1
+
+        self.supports_len = 0
+        if supports is not None:
+            self.supports_len += len(supports)
+
+        if gcn_bool and addaptadj:
+            if aptinit is None:
+                if supports is None:
+                    self.supports = []
+                self.nodevec1 = nn.Parameter(torch.randn(num_nodes, 10).to(device), requires_grad=True).to(device)
+                self.nodevec2 = nn.Parameter(torch.randn(10, num_nodes).to(device), requires_grad=True).to(device)
+                self.supports_len +=1
+            else:
+                if supports is None:
+                    self.supports = []
+                m, p, n = torch.svd(aptinit)
+                initemb1 = torch.mm(m[:, :10], torch.diag(p[:10] ** 0.5))
+                initemb2 = torch.mm(torch.diag(p[:10] ** 0.5), n[:, :10].t())
+                self.nodevec1 = nn.Parameter(initemb1, requires_grad=True).to(device)
+                self.nodevec2 = nn.Parameter(initemb2, requires_grad=True).to(device)
+                self.supports_len += 1
+
+
+
+
+        for b in range(blocks):
+            additional_scope = kernel_size - 1
+            new_dilation = 1
+            for i in range(layers):
+                # dilated convolutions
+                self.filter_convs.append(nn.Conv2d(in_channels=residual_channels,
+                                                   out_channels=dilation_channels,
+                                                   kernel_size=(1,kernel_size),dilation=new_dilation))
+
+                self.gate_convs.append(nn.Conv2d(in_channels=residual_channels,
+                                                 out_channels=dilation_channels,
+                                                 kernel_size=(1, kernel_size), dilation=new_dilation))
+
+                # 1x1 convolution for residual connection
+                self.residual_convs.append(nn.Conv2d(in_channels=dilation_channels,
+                                                     out_channels=residual_channels,
+                                                     kernel_size=(1, 1)))
+
+                # 1x1 convolution for skip connection
+                self.skip_convs.append(nn.Conv2d(in_channels=dilation_channels,
+                                                 out_channels=skip_channels,
+                                                 kernel_size=(1, 1)))
+                self.bn.append(nn.BatchNorm2d(residual_channels))
+                new_dilation *=2
+                receptive_field += additional_scope
+                additional_scope *= 2
+                if self.gcn_bool:
+                    self.gconv.append(gcn(dilation_channels,residual_channels,dropout,support_len=self.supports_len))
+
+
+
+        self.end_conv_1 = nn.Conv2d(in_channels=skip_channels,
+                                  out_channels=end_channels,
+                                  kernel_size=(1,1),
+                                  bias=True)
+
+        self.end_conv_2 = nn.Conv2d(in_channels=end_channels,
+                                    out_channels=out_dim,
+                                    kernel_size=(1,1),
+                                    bias=True)
+
+        self.receptive_field = receptive_field
+
+
+
+    def forward(self, input):
+        in_len = input.size(3)
+        if in_len<self.receptive_field:
+            x = nn.functional.pad(input,(self.receptive_field-in_len,0,0,0))
+        else:
+            x = input
+        x = self.start_conv(x)
+        skip = 0
+
+        # calculate the current adaptive adj matrix once per iteration
+        new_supports = None
+        if self.gcn_bool and self.addaptadj and self.supports is not None:
+            adp = F.softmax(F.relu(torch.mm(self.nodevec1, self.nodevec2)), dim=1)
+            new_supports = self.supports + [adp]
+
+        # WaveNet layers
+        for i in range(self.blocks * self.layers):
+
+            #            |----------------------------------------|     *residual*
+            #            |                                        |
+            #            |    |-- conv -- tanh --|                |
+            # -> dilate -|----|                  * ----|-- 1x1 -- + -->	*input*
+            #                 |-- conv -- sigm --|     |
+            #                                         1x1
+            #                                          |
+            # ---------------------------------------> + ------------->	*skip*
+
+            #(dilation, init_dilation) = self.dilations[i]
+
+            #residual = dilation_func(x, dilation, init_dilation, i)
+            residual = x
+            # dilated convolution
+            filter = self.filter_convs[i](residual)
+            filter = torch.tanh(filter)
+            gate = self.gate_convs[i](residual)
+            gate = torch.sigmoid(gate)
+            x = filter * gate
+
+            # parametrized skip connection
+
+            s = x
+            s = self.skip_convs[i](s)
+            try:
+                skip = skip[:, :, :,  -s.size(3):]
+            except:
+                skip = 0
+            skip = s + skip
+
+
+            if self.gcn_bool and self.supports is not None:
+                if self.addaptadj:
+                    x = self.gconv[i](x, new_supports)
+                else:
+                    x = self.gconv[i](x,self.supports)
+            else:
+                x = self.residual_convs[i](x)
+
+            x = x + residual[:, :, :, -x.size(3):]
+
+
+            x = self.bn[i](x)
+
+        x = F.relu(skip)
+        x = F.relu(self.end_conv_1(x))
+        x = self.end_conv_2(x)
+
+        # x = torch.sigmoid(x)
+        return x
+
+
+'''
+

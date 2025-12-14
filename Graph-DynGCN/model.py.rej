@@ -1,0 +1,20 @@
+--- model.py
++++ model.py
+@@ -311,6 +311,17 @@
+         # calculate the current adaptive adj matrix once per iteration
+         new_supports = None
+         if self.gcn_bool and self.addaptadj and self.supports is not None:
+             adp = F.softmax(F.relu(torch.mm(self.nodevec1, self.nodevec2)), dim=1)
+             new_supports = self.supports + [adp]
++
++        # ---- FIX: make sure gcn receives the SAME number of supports as in __init__ ----
++        # If adaptive adj is enabled, gcn was constructed with support_len = len(self.supports) + 1
++        # Otherwise, it was constructed with support_len = len(self.supports).
++        # Passing only [A] will break channel expectations (e.g., 224 vs 96).
++        if self.gcn_bool:
++            if self.addaptadj and self.supports is not None:
++                supports_to_use = new_supports
++            else:
++                supports_to_use = self.supports
++        # ------------------------------------------------------------------------------
+ 
